@@ -1,85 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UnheardHeard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnheardHeard - Listening to Life Beneath the Surface</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    
     <style>
-        body {
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: Helvetica, Arial, sans-serif;
-            overflow: hidden; /* disable scrolling / rubberband effect on mobile */
-            height:100vh;
-        }
-
-        canvas {
-            display: block;
-            position: absolute;
-            outline:0;
-        }
-
         * {
-            /* disable on touch highlights of html elements, especially on mobile! */
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 100;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section with iframe */
+        .hero-section {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: white;
+            text-align: center;
+            animation: bounce 2s infinite;
+            z-index: 10;
+            cursor: pointer;
+        }
+        
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            margin-top: 8px;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        
+        /* Spacer Section */
+        .spacer-section {
+            background: white;
+            height: 60vh;
+        }
+        
+        /* Main Content Section */
+        .content-section {
+            background: white;
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            min-height: 100vh;
+        }
+        
+        .content-left {
+            flex: 1;
+            background-image: url('ocean-image.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+        }
+        
+        .content-left-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .content-left-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content-left h1 {
+            font-family: 'Cal Sans', sans-serif;
+            font-size: clamp(48px, 6vw, 96px);
+            color: white;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+        
+        .content-left .read-more {
+            display: inline-block;
+            margin-top: 40px;
+            color: white;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 1px solid white;
+            transition: all 0.3s ease;
+        }
+        
+        .content-left .read-more:hover {
+            padding-bottom: 8px;
+            opacity: 0.8;
+        }
+        
+        .content-right {
+            flex: 1;
+            background: white;
+            padding: 80px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .content-right h2 {
+            font-family: 'Cal Sans', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            color: #0a2540;
+            line-height: 1.3;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+        
+        .content-right p {
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 300;
+            font-size: clamp(16px, 1.5vw, 18px);
+            line-height: 1.8;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+        }
+        
+        .content-right p:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        .tagline {
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 400;
+            font-size: clamp(16px, 1.5vw, 18px);
+            font-style: italic;
+            margin-top: 40px;
+            color: #0a2540;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background: #f8f9fa;
+            padding: 120px 100px;
+            text-align: center;
+        }
+        
+        .team-section h2 {
+            font-family: 'Cal Sans', sans-serif;
+            font-size: clamp(36px, 4vw, 52px);
+            color: #0a2540;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .team-section p {
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 300;
+            font-size: clamp(18px, 2vw, 22px);
+            line-height: 1.8;
+            color: #1a1a1a;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+        
+        .team-section .subtitle {
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 300;
+            font-size: clamp(16px, 1.5vw, 18px);
+            line-height: 1.8;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: #0a2540;
+            padding: 120px 100px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Cal Sans', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .cta-section p {
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 300;
+            font-size: clamp(18px, 2vw, 22px);
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 50px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            padding: 18px 48px;
+            border: 2px solid white;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: #0a2540;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 40px 100px;
+            text-align: center;
+            color: #666;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 300;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .content-left {
+                min-height: 60vh;
+            }
+            
+            .content-right {
+                padding: 60px 50px;
+            }
+            
+            .team-section,
+            .cta-section {
+                padding: 80px 50px;
+            }
+            
+            .footer {
+                padding: 40px 50px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .content-left {
+                padding: 40px 30px;
+                min-height: 50vh;
+            }
+            
+            .content-right {
+                padding: 40px 30px;
+            }
+            
+            .team-section,
+            .cta-section {
+                padding: 60px 30px;
+            }
+            
+            .footer {
+                padding: 30px 20px;
+            }
+        }
     </style>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-    <meta itemprop="name" content="UnheardHeard">
-    <meta itemprop="description" content="made with cables">
-    <meta itemprop="image" content="screenshot.png">
-    <meta name="description" content="made with cables"/>
-
 </head>
 <body>
-    <canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>
-
+    <!-- Hero Section with iframe -->
+    <section class="hero-section">
+        <iframe 
+            class="hero-iframe" 
+            src="https://cables.gl/view/JdRYK1" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+        <div class="scroll-indicator" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
+            <div>Scroll to explore</div>
+            <svg fill="white" viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+        </div>
+    </section>
     
-    <script type="text/javascript" src="js/patch.js" async></script>
+    <!-- Spacer Section -->
+    <section class="spacer-section"></section>
     
-
-    <script type="text/javascript">
-
-        function showError(initiator,...args)
-        {
-            CABLES.logErrorConsole("[" + initiator + "]", ...args);
-        }
-
-        function patchInitialized(patch)
-        {
-            // You can now access the patch object (patch), register variable watchers and so on
-        }
-
-        function patchFinishedLoading(patch)
-        {
-            // The patch is ready now, all assets have been loaded
-        }
-
-        document.addEventListener("CABLES.jsLoaded", function (event)
-        {
-            CABLES.patch = new CABLES.Patch({
-                patch: CABLES.exportedPatch,
-                "prefixAssetPath": "",
-                "assetPath": "assets/",
-                "jsPath": "js/",
-                "glCanvasId": "glcanvas",
-                "glCanvasResizeToWindow": true,
-                "onError": showError,
-                "onPatchLoaded": patchInitialized,
-                "onFinishedLoading": patchFinishedLoading,
-                "canvas": {"alpha":true, "premultipliedAlpha":true } // make canvas transparent
-            });
-        });
-
-        // disable rubberband effect on mobile devices
-        document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
-    </script>
+    <!-- Main Content Section -->
+    <section class="content-section">
+        <div class="content-left">
+            <div class="content-left-overlay"></div>
+            <div class="content-left-text">
+                <h1>Listening to<br>Life Beneath<br>the Surface</h1>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+        <div class="content-right">
+            <h2>Building the communication layer between us and the living world.</h2>
+            <p>UnheardHeard is creating a new data layer for the planet. One that lets technology listen, learn, and respond to life itself.</p>
+            <p>Our AI platform transforms natural signals into insight, connecting biology, ecology, and industry through a shared language of data.</p>
+            <p>From oceans to farmland, we translate movement, sound, and environmental patterns into understanding, helping humans make decisions that strengthen, rather than silence, the living world.</p>
+            <p class="tagline">Because intelligence begins with listening.</p>
+        </div>
+    </section>
+    
+    <!-- Team/Vision Section -->
+    <section class="team-section">
+        <h2>Team / Vision</h2>
+        <p>Built by scientists, engineers, and storytellers who believe that technology should listen before it acts.</p>
+        <p class="subtitle">No need for long bios yet — just enough to show competence and intent.</p>
+    </section>
+    
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <h2>Partner With Us</h2>
+        <p>We're partnering with early customers in ocean and land-based industries. If you want to help build the communication layer for nature, reach out.</p>
+        <a href="mailto:hello@unheardheard.com" class="cta-button">Get In Touch</a>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 UnheardHeard. Intelligence begins with listening.</p>
+    </footer>
 </body>
 </html>
