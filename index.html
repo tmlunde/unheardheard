@@ -217,7 +217,7 @@
             margin: 0 auto;
         }
 
-  /* Use Cases Section */
+       /* Use Cases Section */
         .use-cases-section {
             background: white;
             padding: 120px 100px;
@@ -249,10 +249,20 @@
         
         .use-cases-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 50px;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        @media (min-width: 768px) {
+            .use-cases-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .use-case.primary {
+                grid-column: span 2;
+            }
         }
         
         .use-case {
@@ -265,7 +275,6 @@
             background: #f8f9fa;
             padding: 30px;
             border-radius: 4px;
-            grid-column: span 2;
         }
         
         .use-case.future {
@@ -320,6 +329,7 @@
             font-weight: 400;
             color: #0a2540;
         }
+        
         
         /* CTA Section */
         .cta-section {
@@ -466,33 +476,33 @@
         
     </section>
 
-     <!-- Use Cases Section -->
+      <!-- Use Cases Section -->
     <section class="use-cases-section">
         <div class="use-cases-intro">
-            <h2>Starting with aquaculture. Scaling to all life.</h2>
-            <p class="intro-text">We're building the communication layer for nature — a platform that translates natural signals into actionable insight. Our first beachhead is ocean farming, where regulations, welfare, and economics converge.</p>
+            <h2>Technology that listens to life</h2>
+            <p class="intro-text">We transform natural signals into actionable insight — helping you monitor welfare, optimize operations, and meet regulatory requirements.</p>
         </div>
         
         <div class="use-cases-grid">
             <div class="use-case primary">
-                <h3>Listening to the Ocean</h3>
-                <p class="who">Aquaculture operators, fisheries, regulators</p>
-                <p class="what">Hydrophones capture cod and salmon vocalizations, shrimp clicks, and pump sounds to assess fish welfare, feeding behavior, and equipment health in real time.</p>
-                <p class="why"><strong>Why this matters:</strong> EU welfare regulations require continuous monitoring. Sound works in turbid water, day and night, combining animal and mechanical diagnostics in one low-power system. This is our beachhead — proven customers, regulatory urgency, defensible moat.</p>
+                <h3>Ocean Monitoring for Aquaculture</h3>
+                <p class="who">For fish farmers and aquaculture operations</p>
+                <p class="what">Our hydrophone systems continuously monitor fish vocalizations, feeding sounds, and equipment performance — giving you real-time insight into welfare and operational health.</p>
+                <p class="why"><strong>What you get:</strong> Early detection of stress and illness, optimized feeding schedules, equipment fault alerts, and automated compliance reporting for welfare regulations. All from a single low-power system that works 24/7 in any water conditions.</p>
             </div>
             
             <div class="use-case">
-                <h3>The Pulse of Kelp Forests</h3>
-                <p class="who">Blue-carbon projects, coastal restoration programs</p>
-                <p class="what">Underwater sound reveals ecosystem recovery and biodiversity around kelp beds.</p>
-                <p class="why"><strong>Natural extension:</strong> Same acoustic platform, new revenue stream. Sound intensity correlates with life density — a verifiable metric for carbon credits.</p>
+                <h3>Ecosystem Monitoring</h3>
+                <p class="who">For coastal restoration and blue-carbon projects</p>
+                <p class="what">Track biodiversity recovery and ecosystem health through underwater acoustic monitoring of kelp forests and marine habitats.</p>
+                <p class="why"><strong>What you get:</strong> Continuous biodiversity metrics for carbon credit verification, restoration progress tracking, and environmental impact assessments without divers or cameras.</p>
             </div>
             
-            <div class="use-case future">
-                <h3>Beyond the Ocean</h3>
-                <p class="who">The platform scales</p>
-                <p class="what">The same signal translation layer that interprets fish vocalizations works for forest bioelectric signals, barn acoustics, and urban biodiversity monitoring.</p>
-                <p class="why"><strong>The long-term vision:</strong> Once we own the ocean interface, we become the standard for human-nature communication across all ecosystems. Every signal source becomes a data stream. Every insight strengthens the model.</p>
+            <div class="use-case">
+                <h3>Coming Soon: Beyond the Ocean</h3>
+                <p class="who">Expanding to forests, farms, and cities</p>
+                <p class="what">The same technology that monitors fish welfare can track forest health, barn conditions, and urban biodiversity.</p>
+                <p class="why"><strong>Our vision:</strong> Building a universal platform for human-nature communication across all ecosystems.</p>
             </div>
         </div>
     </section>
