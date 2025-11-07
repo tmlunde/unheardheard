@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" href="assets/favicon.ico">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnheardHeard - Listening to Life Beneath the Surface</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -23,9 +28,10 @@
         }
         
         body {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 100;
-            color: #1a1a1a;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            color: #2D3339;
+            background-color: #FDFCFB;
             overflow-x: hidden;
         }
         
@@ -50,11 +56,12 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 14px;
-            color: white;
+            color: #FDFCFB;
             text-align: center;
             animation: bounce 2s infinite;
             z-index: 10;
             cursor: pointer;
+            font-weight: 400;
         }
         
         .scroll-indicator svg {
@@ -77,13 +84,13 @@
         
         /* Spacer Section */
         .spacer-section {
-            background: white;
+            background: #FDFCFB;
             height: 60vh;
         }
         
         /* Main Content Section */
         .content-section {
-            background: white;
+            background: #FDFCFB;
             padding: 0;
             display: flex;
             align-items: stretch;
@@ -108,7 +115,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(51, 61, 71, 0.4);
         }
         
         .content-left-text {
@@ -117,34 +124,16 @@
         }
         
         .content-left h1 {
-            font-family: 'Cal Sans', sans-serif;
-            font-size: clamp(48px, 6vw, 96px);
-            color: white;
-            line-height: 1.1;
-            font-weight: 400;
-        }
-        
-        .content-left .read-more {
-            display: inline-block;
-            margin-top: 40px;
-            color: white;
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
-            font-size: 16px;
-            text-decoration: none;
-            padding-bottom: 4px;
-            border-bottom: 1px solid white;
-            transition: all 0.3s ease;
-        }
-        
-        .content-left .read-more:hover {
-            padding-bottom: 8px;
-            opacity: 0.8;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 600;
+            font-size: clamp(48px, 6vw, 72px);
+            color: #FDFCFB;
+            line-height: 1.2;
         }
         
         .content-right {
             flex: 1;
-            background: white;
+            background: #FDFCFB;
             padding: 80px 100px;
             display: flex;
             flex-direction: column;
@@ -152,20 +141,20 @@
         }
         
         .content-right h2 {
-            font-family: 'Cal Sans', sans-serif;
-            font-size: clamp(32px, 4vw, 48px);
-            color: #0a2540;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 600;
+            font-size: clamp(36px, 4vw, 48px);
+            color: #2D3339;
             line-height: 1.3;
             margin-bottom: 50px;
-            font-weight: 400;
         }
         
         .content-right p {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
-            font-size: clamp(16px, 1.5vw, 18px);
-            line-height: 1.8;
-            color: #1a1a1a;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #2D3339;
             margin-bottom: 30px;
         }
         
@@ -174,52 +163,42 @@
         }
         
         .tagline {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 400;
-            font-size: clamp(16px, 1.5vw, 18px);
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
             font-style: italic;
             margin-top: 40px;
-            color: #0a2540;
+            color: #333D47;
         }
         
         /* Team Section */
         .team-section {
-            background: #f8f9fa;
+            background: #FDFCFB;
             padding: 120px 100px;
             text-align: center;
         }
         
         .team-section h2 {
-            font-family: 'Cal Sans', sans-serif;
-            font-size: clamp(36px, 4vw, 52px);
-            color: #0a2540;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 600;
+            font-size: clamp(36px, 4vw, 48px);
+            color: #2D3339;
             margin-bottom: 40px;
-            font-weight: 400;
         }
         
         .team-section p {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
-            font-size: clamp(18px, 2vw, 22px);
-            line-height: 1.8;
-            color: #1a1a1a;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            font-size: clamp(18px, 2vw, 20px);
+            line-height: 1.7;
+            color: #2D3339;
             max-width: 900px;
             margin: 0 auto 30px;
         }
         
-        .team-section .subtitle {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
-            font-size: clamp(16px, 1.5vw, 18px);
-            line-height: 1.8;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-       /* Use Cases Section */
+        /* Use Cases Section */
         .use-cases-section {
-            background: white;
+            background: #333D47;
             padding: 120px 100px;
         }
         
@@ -229,20 +208,20 @@
         }
         
         .use-cases-intro h2 {
-            font-family: 'Cal Sans', sans-serif;
-            font-size: clamp(32px, 4vw, 48px);
-            color: #0a2540;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 600;
+            font-size: clamp(36px, 4vw, 48px);
+            color: #FDFCFB;
             margin-bottom: 30px;
-            font-weight: 400;
             line-height: 1.3;
         }
         
         .use-cases-intro .intro-text {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
-            font-size: clamp(18px, 2vw, 22px);
-            line-height: 1.8;
-            color: #1a1a1a;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            font-size: clamp(18px, 2vw, 20px);
+            line-height: 1.7;
+            color: #FDFCFB;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -266,123 +245,114 @@
         }
         
         .use-case {
-            border-left: 2px solid #0a2540;
+            border-left: 2px solid #5C6B5A;
             padding-left: 30px;
         }
         
         .use-case.primary {
-            border-left: 4px solid #0a2540;
-            background: #f8f9fa;
+            border-left: 4px solid #D97A2E;
+            background: rgba(253, 252, 251, 0.05);
             padding: 30px;
-            border-radius: 4px;
-        }
-        
-        .use-case.future {
-            border-left: 2px solid #999;
-            opacity: 0.85;
+            border-radius: 8px;
         }
         
         .use-case h3 {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 400;
-            font-size: clamp(20px, 2vw, 24px);
-            color: #0a2540;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 600;
+            font-size: clamp(22px, 2vw, 28px);
+            color: #FDFCFB;
             margin-bottom: 15px;
         }
         
         .use-case.primary h3 {
-            font-size: clamp(24px, 2.5vw, 28px);
-        }
-        
-        .use-case.future h3 {
-            color: #666;
+            font-size: clamp(24px, 2.5vw, 32px);
         }
         
         .use-case .who {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 500;
             font-size: 14px;
-            color: #666;
+            color: #D97A2E;
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
         .use-case .what {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
-            font-size: clamp(15px, 1.5vw, 17px);
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            font-size: clamp(16px, 1.5vw, 18px);
             line-height: 1.7;
-            color: #1a1a1a;
+            color: #FDFCFB;
             margin-bottom: 15px;
         }
         
         .use-case .why {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
-            font-size: clamp(14px, 1.5vw, 16px);
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            font-size: clamp(16px, 1.5vw, 18px);
             line-height: 1.7;
-            color: #444;
+            color: rgba(253, 252, 251, 0.85);
         }
         
         .use-case .why strong {
-            font-weight: 400;
-            color: #0a2540;
+            font-weight: 500;
+            color: #FDFCFB;
         }
-        
         
         /* CTA Section */
         .cta-section {
-            background: #453e65;
+            background: #FDFCFB;
             padding: 120px 100px;
             text-align: center;
-            color: white;
         }
         
         .cta-section h2 {
-            font-family: 'Cal Sans', sans-serif;
-            font-size: clamp(32px, 4vw, 48px);
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 600;
+            font-size: clamp(36px, 4vw, 48px);
+            color: #2D3339;
             margin-bottom: 40px;
-            font-weight: 400;
         }
         
         .cta-section p {
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
-            font-size: clamp(18px, 2vw, 22px);
-            line-height: 1.8;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            font-size: clamp(18px, 2vw, 20px);
+            line-height: 1.7;
+            color: #2D3339;
             max-width: 900px;
             margin: 0 auto 50px;
         }
         
         .cta-button {
             display: inline-block;
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 400;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 500;
             font-size: 18px;
-            color: white;
+            color: #FDFCFB;
+            background: #D97A2E;
             text-decoration: none;
             padding: 18px 48px;
-            border: 2px solid white;
-            border-radius: 50px;
+            border: none;
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
         
         .cta-button:hover {
-            background: white;
-            color: #0a2540;
+            background: #c16a24;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(217, 122, 46, 0.3);
         }
         
         /* Footer */
         .footer {
-            background: #000;
+            background: #333D47;
             padding: 40px 100px;
             text-align: center;
-            color: #666;
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 300;
+            color: rgba(253, 252, 251, 0.7);
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
             font-size: 14px;
         }
         
@@ -401,8 +371,13 @@
             }
             
             .team-section,
+            .use-cases-section,
             .cta-section {
                 padding: 80px 50px;
+            }
+            
+            .use-cases-grid {
+                gap: 40px;
             }
             
             .footer {
@@ -420,9 +395,26 @@
                 padding: 40px 30px;
             }
             
+            .content-right p {
+                font-size: 16px;
+            }
+            
             .team-section,
+            .use-cases-section,
             .cta-section {
                 padding: 60px 30px;
+            }
+            
+            .use-cases-grid {
+                gap: 30px;
+            }
+            
+            .use-case {
+                padding-left: 20px;
+            }
+            
+            .use-case.primary {
+                padding: 20px;
             }
             
             .footer {
@@ -442,7 +434,7 @@
         </iframe>
         <div class="scroll-indicator" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
             <div>Scroll to explore</div>
-            <svg fill="white" viewBox="0 0 24 24">
+            <svg fill="#FDFCFB" viewBox="0 0 24 24">
                 <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
             </svg>
         </div>
@@ -457,7 +449,6 @@
             <div class="content-left-overlay"></div>
             <div class="content-left-text">
                 <h1>Listening to<br>Life Beneath<br>the Surface</h1>
-                
             </div>
         </div>
         <div class="content-right">
@@ -473,10 +464,9 @@
     <section class="team-section">
         <h2>Team</h2>
         <p>Built by scientists, engineers, and storytellers who believe that technology should listen before it acts.</p>
-        
     </section>
 
-      <!-- Use Cases Section -->
+    <!-- Use Cases Section -->
     <section class="use-cases-section">
         <div class="use-cases-intro">
             <h2>Technology that listens to life</h2>
@@ -506,14 +496,12 @@
             </div>
         </div>
     </section>
-
-    
     
     <!-- Call to Action Section -->
     <section class="cta-section">
         <h2>Partner With Us</h2>
         <p>We're partnering with early customers in ocean and land-based industries. If you want to help build the communication layer for nature, reach out.</p>
-        <a href="mailto:hello@unheardheard.com" class="cta-button">Get In Touch</a>
+        <a href="mailto:hello@unheardheard.org" class="cta-button">Get In Touch</a>
     </section>
     
     <!-- Footer -->
