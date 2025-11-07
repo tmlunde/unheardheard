@@ -217,7 +217,7 @@
             margin: 0 auto;
         }
 
-       /* Use Cases Section */
+  /* Use Cases Section */
         .use-cases-section {
             background: white;
             padding: 120px 100px;
@@ -260,12 +260,33 @@
             padding-left: 30px;
         }
         
+        .use-case.primary {
+            border-left: 4px solid #0a2540;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 4px;
+            grid-column: span 2;
+        }
+        
+        .use-case.future {
+            border-left: 2px solid #999;
+            opacity: 0.85;
+        }
+        
         .use-case h3 {
             font-family: 'Lexend Deca', sans-serif;
             font-weight: 400;
             font-size: clamp(20px, 2vw, 24px);
             color: #0a2540;
             margin-bottom: 15px;
+        }
+        
+        .use-case.primary h3 {
+            font-size: clamp(24px, 2.5vw, 28px);
+        }
+        
+        .use-case.future h3 {
+            color: #666;
         }
         
         .use-case .who {
@@ -445,71 +466,38 @@
         
     </section>
 
-    <!-- Use Cases Section -->
+     <!-- Use Cases Section -->
     <section class="use-cases-section">
         <div class="use-cases-intro">
-            <h2>From deep fjords to forest canopies, barns to cities</h2>
-            <p class="intro-text">UnheardHeard builds the communication layer between technology and the living world. We listen to life, not to control it, but to understand it.</p>
+            <h2>Starting with aquaculture. Scaling to all life.</h2>
+            <p class="intro-text">We're building the communication layer for nature — a platform that translates natural signals into actionable insight. Our first beachhead is ocean farming, where regulations, welfare, and economics converge.</p>
         </div>
         
         <div class="use-cases-grid">
-            <div class="use-case">
+            <div class="use-case primary">
                 <h3>Listening to the Ocean</h3>
                 <p class="who">Aquaculture operators, fisheries, regulators</p>
-                <p class="what">Hydrophones capture cod and salmon vocalizations, shrimp clicks, and pump sounds to assess fish welfare, feeding behavior, and equipment health.</p>
-                <p class="why"><strong>Why sound:</strong> Works in turbid water, day and night; combines animal and mechanical diagnostics in one low-power system.</p>
+                <p class="what">Hydrophones capture cod and salmon vocalizations, shrimp clicks, and pump sounds to assess fish welfare, feeding behavior, and equipment health in real time.</p>
+                <p class="why"><strong>Why this matters:</strong> EU welfare regulations require continuous monitoring. Sound works in turbid water, day and night, combining animal and mechanical diagnostics in one low-power system. This is our beachhead — proven customers, regulatory urgency, defensible moat.</p>
             </div>
             
             <div class="use-case">
                 <h3>The Pulse of Kelp Forests</h3>
-                <p class="who">Blue-carbon projects, coastal developers, restoration programs</p>
+                <p class="who">Blue-carbon projects, coastal restoration programs</p>
                 <p class="what">Underwater sound reveals ecosystem recovery and biodiversity around kelp beds.</p>
-                <p class="why"><strong>Why sound:</strong> Sound intensity correlates with life density — a natural metric for carbon-credit verification.</p>
+                <p class="why"><strong>Natural extension:</strong> Same acoustic platform, new revenue stream. Sound intensity correlates with life density — a verifiable metric for carbon credits.</p>
             </div>
             
-            <div class="use-case">
-                <h3>Inside the Barn</h3>
-                <p class="who">Cattle, pig, and poultry producers; animal-welfare certifiers</p>
-                <p class="what">Ceiling-mounted microphones listen for coughs, squeals, feeding rhythm, and ventilation noise.</p>
-                <p class="why"><strong>Why sound:</strong> Detects illness, overcrowding, or equipment faults long before human observation. Healthier herds, lower antibiotics, proof of welfare compliance.</p>
-            </div>
-            
-            <div class="use-case">
-                <h3>The Living Forest</h3>
-                <p class="who">Forest owners, carbon traders, conservation funds</p>
-                <p class="what">Acoustic richness and tree bioelectric signals show drought, disease, and biodiversity trends.</p>
-                <p class="why"><strong>Why sound and signal:</strong> Early stress detection enables proactive management and credible carbon accounting.</p>
-            </div>
-            
-            <div class="use-case">
-                <h3>Plants That Speak</h3>
-                <p class="who">Greenhouse growers, vertical farms, smart-garden brands</p>
-                <p class="what">Electrodes read tiny voltage changes in leaves to automate watering and climate control.</p>
-                <p class="why"><strong>Why signal:</strong> Plants reveal stress hours or days before wilting — a silent but measurable language.</p>
-            </div>
-            
-            <div class="use-case">
-                <h3>Urban Wildlife Resonance</h3>
-                <p class="who">Cities, environmental agencies, real-estate developers</p>
-                <p class="what">Acoustic nodes map bird, bat, and insect diversity across rooftops and parks.</p>
-                <p class="why"><strong>Why sound:</strong> Continuous biodiversity data without cameras or human presence — guiding greener city design.</p>
-            </div>
-            
-            <div class="use-case">
-                <h3>Planetary Sound Index</h3>
-                <p class="who">Research networks, insurers, policymakers</p>
-                <p class="what">A global baseline of oceanic, terrestrial, and plant acoustic signatures tracking planetary vitality.</p>
-                <p class="why"><strong>Why sound:</strong> Compact, comparable, universal — a living heartbeat of Earth.</p>
-            </div>
-            
-            <div class="use-case">
-                <h3>Education & Public Awareness</h3>
-                <p class="who">Museums, science centers, schools, environmental NGOs</p>
-                <p class="what">Interactive installations translate nature's real-time acoustic and electrical signals into light or music.</p>
-                <p class="why"><strong>Why:</strong> Builds empathy and understanding — people hear the world they're protecting.</p>
+            <div class="use-case future">
+                <h3>Beyond the Ocean</h3>
+                <p class="who">The platform scales</p>
+                <p class="what">The same signal translation layer that interprets fish vocalizations works for forest bioelectric signals, barn acoustics, and urban biodiversity monitoring.</p>
+                <p class="why"><strong>The long-term vision:</strong> Once we own the ocean interface, we become the standard for human-nature communication across all ecosystems. Every signal source becomes a data stream. Every insight strengthens the model.</p>
             </div>
         </div>
     </section>
+
+    
     
     <!-- Call to Action Section -->
     <section class="cta-section">
