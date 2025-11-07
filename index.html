@@ -198,17 +198,30 @@
         
         /* Use Cases Section */
         .use-cases-section {
-            background: #333D47;
+            background-image: url('assets/landscape-background.png');
+            background-size: cover;
+            background-position: center top;
+            background-attachment: scroll;
             padding: 0;
+            position: relative;
+        }
+        
+        .use-cases-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(51, 61, 71, 0.3) 0%, rgba(51, 61, 71, 0.5) 40%, rgba(51, 61, 71, 0.7) 100%);
+            z-index: 1;
         }
         
         .use-cases-intro {
             position: relative;
+            z-index: 2;
             text-align: center;
             padding: 120px 100px;
-            background-image: url('assets/landscape-background.png');
-            background-size: cover;
-            background-position: center top;
             min-height: 400px;
             display: flex;
             flex-direction: column;
@@ -216,20 +229,7 @@
             justify-content: center;
         }
         
-        .use-cases-intro::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(51, 61, 71, 0.3) 0%, rgba(51, 61, 71, 0.85) 70%);
-            z-index: 1;
-        }
-        
         .use-cases-intro h2 {
-            position: relative;
-            z-index: 2;
             font-family: 'Fira Sans', sans-serif;
             font-weight: 600;
             font-size: clamp(36px, 4vw, 48px);
@@ -239,8 +239,6 @@
         }
         
         .use-cases-intro .intro-text {
-            position: relative;
-            z-index: 2;
             font-family: 'Fira Sans', sans-serif;
             font-weight: 400;
             font-size: clamp(18px, 2vw, 20px);
@@ -251,8 +249,9 @@
         }
         
         .use-cases-content {
-            padding: 80px 100px 120px;
-            background: #333D47;
+            position: relative;
+            z-index: 2;
+            padding: 0 100px 120px;
         }
         
         .use-cases-grid {
@@ -276,13 +275,15 @@
         .use-case {
             border-left: 2px solid #5C6B5A;
             padding-left: 30px;
+            background: rgba(51, 61, 71, 0.85);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
         }
         
         .use-case.primary {
             border-left: 4px solid #D97A2E;
-            background: rgba(253, 252, 251, 0.05);
-            padding: 30px;
-            border-radius: 8px;
+            background: rgba(51, 61, 71, 0.9);
         }
         
         .use-case h3 {
@@ -409,7 +410,7 @@
             }
             
             .use-cases-content {
-                padding: 60px 50px 80px;
+                padding: 0 50px 80px;
             }
             
             .use-cases-grid {
@@ -446,7 +447,7 @@
             }
             
             .use-cases-content {
-                padding: 40px 30px 60px;
+                padding: 0 30px 60px;
             }
             
             .use-cases-grid {
