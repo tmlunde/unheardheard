@@ -199,15 +199,37 @@
         /* Use Cases Section */
         .use-cases-section {
             background: #333D47;
-            padding: 120px 100px;
+            padding: 0;
         }
         
         .use-cases-intro {
+            position: relative;
             text-align: center;
-            margin-bottom: 80px;
+            padding: 120px 100px;
+            background-image: url('assets/landscape-background.png');
+            background-size: cover;
+            background-position: center top;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .use-cases-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(51, 61, 71, 0.3) 0%, rgba(51, 61, 71, 0.85) 70%);
+            z-index: 1;
         }
         
         .use-cases-intro h2 {
+            position: relative;
+            z-index: 2;
             font-family: 'Fira Sans', sans-serif;
             font-weight: 600;
             font-size: clamp(36px, 4vw, 48px);
@@ -217,6 +239,8 @@
         }
         
         .use-cases-intro .intro-text {
+            position: relative;
+            z-index: 2;
             font-family: 'Fira Sans', sans-serif;
             font-weight: 400;
             font-size: clamp(18px, 2vw, 20px);
@@ -224,6 +248,11 @@
             color: #FDFCFB;
             max-width: 900px;
             margin: 0 auto;
+        }
+        
+        .use-cases-content {
+            padding: 80px 100px 120px;
+            background: #333D47;
         }
         
         .use-cases-grid {
@@ -275,7 +304,7 @@
             color: #D97A2E;
             margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.75px;
         }
         
         .use-case .what {
@@ -371,9 +400,16 @@
             }
             
             .team-section,
-            .use-cases-section,
             .cta-section {
                 padding: 80px 50px;
+            }
+            
+            .use-cases-intro {
+                padding: 80px 50px;
+            }
+            
+            .use-cases-content {
+                padding: 60px 50px 80px;
             }
             
             .use-cases-grid {
@@ -400,9 +436,17 @@
             }
             
             .team-section,
-            .use-cases-section,
             .cta-section {
                 padding: 60px 30px;
+            }
+            
+            .use-cases-intro {
+                padding: 60px 30px;
+                min-height: 300px;
+            }
+            
+            .use-cases-content {
+                padding: 40px 30px 60px;
             }
             
             .use-cases-grid {
@@ -473,26 +517,28 @@
             <p class="intro-text">We transform natural signals into actionable insight — helping you monitor welfare, optimize operations, and meet regulatory requirements.</p>
         </div>
         
-        <div class="use-cases-grid">
-            <div class="use-case primary">
-                <h3>Ocean Monitoring for Aquaculture</h3>
-                <p class="who">For fish farmers and aquaculture operations</p>
-                <p class="what">Our hydrophone systems continuously monitor fish vocalizations, feeding sounds, and equipment performance — giving you real-time insight into welfare and operational health.</p>
-                <p class="why"><strong>What you get:</strong> Early detection of stress and illness, optimized feeding schedules, equipment fault alerts, and automated compliance reporting for welfare regulations. All from a single low-power system that works 24/7 in any water conditions.</p>
-            </div>
-            
-            <div class="use-case">
-                <h3>Ecosystem Monitoring</h3>
-                <p class="who">For coastal restoration and blue-carbon projects</p>
-                <p class="what">Track biodiversity recovery and ecosystem health through underwater acoustic monitoring of kelp forests and marine habitats.</p>
-                <p class="why"><strong>What you get:</strong> Continuous biodiversity metrics for carbon credit verification, restoration progress tracking, and environmental impact assessments without divers or cameras.</p>
-            </div>
-            
-            <div class="use-case">
-                <h3>Coming Soon: Beyond the Ocean</h3>
-                <p class="who">Expanding to forests, farms, and cities</p>
-                <p class="what">The same technology that monitors fish welfare can track forest health, barn conditions, and urban biodiversity.</p>
-                <p class="why"><strong>Our vision:</strong> Building a universal platform for human-nature communication across all ecosystems.</p>
+        <div class="use-cases-content">
+            <div class="use-cases-grid">
+                <div class="use-case primary">
+                    <h3>Ocean Monitoring for Aquaculture</h3>
+                    <p class="who">For fish farmers and aquaculture operations</p>
+                    <p class="what">Our hydrophone systems continuously monitor fish vocalizations, feeding sounds, and equipment performance — giving you real-time insight into welfare and operational health.</p>
+                    <p class="why"><strong>What you get:</strong> Early detection of stress and illness, optimized feeding schedules, equipment fault alerts, and automated compliance reporting for welfare regulations. All from a single low-power system that works 24/7 in any water conditions.</p>
+                </div>
+                
+                <div class="use-case">
+                    <h3>Ecosystem Monitoring</h3>
+                    <p class="who">For coastal restoration and blue-carbon projects</p>
+                    <p class="what">Track biodiversity recovery and ecosystem health through underwater acoustic monitoring of kelp forests and marine habitats.</p>
+                    <p class="why"><strong>What you get:</strong> Continuous biodiversity metrics for carbon credit verification, restoration progress tracking, and environmental impact assessments without divers or cameras.</p>
+                </div>
+                
+                <div class="use-case">
+                    <h3>Coming Soon: Beyond the Ocean</h3>
+                    <p class="who">Expanding to forests, farms, and cities</p>
+                    <p class="what">The same technology that monitors fish welfare can track forest health, barn conditions, and urban biodiversity.</p>
+                    <p class="why"><strong>Our vision:</strong> Building a universal platform for human-nature communication across all ecosystems.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -501,7 +547,7 @@
     <section class="cta-section">
         <h2>Partner With Us</h2>
         <p>We're partnering with early customers in ocean and land-based industries. If you want to help build the communication layer for nature, reach out.</p>
-        <a href="mailto:hello@unheardheard.org" class="cta-button">Get In Touch</a>
+        <a href="mailto:hello@unheardheard.com" class="cta-button">Get In Touch</a>
     </section>
     
     <!-- Footer -->
