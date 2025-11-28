@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Cod Vocalizations for Welfare Monitoring - Technical White Paper</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            color: #2D3339;
+            background-color: #FDFCFB;
+            line-height: 1.7;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .header {
+            border-bottom: 2px solid #0C1A27;
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .document-type {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #0C1A27;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .meta {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: #f5f5f5;
+            border-left: 4px solid #0C1A27;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .executive-summary h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0C1A27;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .executive-summary p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .executive-summary p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Typography */
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #0C1A27;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1B2E3A;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2D3339;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #2D3339;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            color: #2D3339;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 15px;
+        }
+        
+        table caption {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0C1A27;
+            text-align: left;
+            margin-bottom: 10px;
+            caption-side: top;
+        }
+        
+        th {
+            background: #0C1A27;
+            color: #FDFCFB;
+            padding: 12px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        /* Data boxes */
+        .data-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .data-box h4 {
+            margin-top: 0;
+            color: #0C1A27;
+        }
+        
+        /* References */
+        .references {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .references h2 {
+            margin-top: 0;
+        }
+        
+        .reference {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            text-indent: -25px;
+        }
+        
+        .reference a {
+            color: #0C1A27;
+            text-decoration: none;
+        }
+        
+        .reference a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Key findings box */
+        .key-finding {
+            border-left: 4px solid #4A645A;
+            background: #f9f9f9;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        
+        .key-finding strong {
+            color: #0C1A27;
+        }
+        
+        /* Section numbers */
+        .section-number {
+            color: #999;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        /* Evidence box */
+        .evidence-box {
+            background: #fff;
+            border: 1px solid #4A645A;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .evidence-box h4 {
+            margin-top: 0;
+            color: #4A645A;
+            font-size: 16px;
+        }
+        
+        .evidence-box p {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .evidence-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                padding: 20px;
+                max-width: 100%;
+            }
+            
+            .executive-summary {
+                page-break-inside: avoid;
+            }
+            
+            table {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            table {
+                font-size: 13px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="document-type">Technical White Paper</div>
+        <h1>Using Cod Vocalizations for Welfare Monitoring in Aquaculture</h1>
+        <div class="subtitle">Non-invasive acoustic monitoring across hatchery, grow-out, and broodstock phases</div>
+        <div class="meta">UnheardHeard • 2025</div>
+    </div>
+    
+    <!-- Executive Summary -->
+    <div class="executive-summary">
+        <h2>Executive Summary</h2>
+        <p>Cod (Gadus morhua) are a soniferous (sound-producing) species that use low-frequency "grunt" calls in various social and feeding contexts. Recent advances in passive acoustic monitoring (PAM) offer fish farmers new, non-invasive ways to track cod behavior and welfare in real time.</p>
+        <p>This white paper outlines how cod vocalizations and underwater acoustic sensing can be leveraged across different production phases—from hatchery and juveniles to grow-out and broodstock—to assess welfare indicators such as feeding activity, aggression, and stress.</p>
+        <p>It also highlights how AI-driven analysis of hydrophone data can detect anomalies in sound patterns that may signal welfare problems, enabling proactive management.</p>
+    </div>
+    
+    <!-- Main Content -->
+    
+    <h2><span class="section-number">1.</span>Hatchery and Juvenile Phase</h2>
+    
+    <h3>1.1 Acoustic Characteristics of Young Cod</h3>
+    
+    <p>Young cod in hatchery tanks or nursery systems produce relatively few deliberate vocalizations due to undeveloped drumming muscles. Audible grunts are typically observed once cod exceed approximately 37 cm in length. Nevertheless, acoustic cues can still be informative at this early stage.</p>
+    
+    <h3>1.2 Feeding Response Monitoring</h3>
+    
+    <p>Even without formal "calls," fish activity generates noise—for example, splashing or clicking sounds during feeding frenzies. A strong, consistent sound of juveniles actively snapping at feed indicates good appetite and normal behavior.</p>
+    
+    <div class="evidence-box">
+        <h4>Research Evidence: Feeding Acoustics</h4>
+        <p>Research in salmon net-pens has shown that the underwater soundscape clearly "mirrors the feeding status" of fish (Rosten et al., 2022). This suggests that passive acoustics can similarly track cod feeding patterns.</p>
+    </div>
+    
+    <p><strong>Practical indicators:</strong></p>
+    <ul>
+        <li><strong>Normal feeding:</strong> Strong, consistent sounds during feeding times indicate vigorous feeding behavior</li>
+        <li><strong>Poor feeding response:</strong> Unusually quiet tank during feeding may signal illness or suboptimal water conditions</li>
+        <li><strong>Early detection:</strong> Continuous hydrophone monitoring alerts farmers to drops in feeding activity before visual symptoms appear</li>
+    </ul>
+    
+    <h3>1.3 Stress and Disturbance Detection</h3>
+    
+    <p>Juvenile cod typically do not produce grunt calls when mildly stressed, but sudden agitation creates detectable changes in acoustic activity.</p>
+    
+    <table>
+        <caption>Table 1: Acoustic Indicators of Stress in Juvenile Cod</caption>
+        <thead>
+            <tr>
+                <th>Acoustic Pattern</th>
+                <th>Interpretation</th>
+                <th>Possible Cause</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Burst of chaotic movement noise</td>
+                <td>Acute stress or disturbance</td>
+                <td>Loud noise, handling, predator presence</td>
+            </tr>
+            <tr>
+                <td>Abnormally prolonged silence</td>
+                <td>Severe stress (freezing behavior)</td>
+                <td>Extreme fear, oxygen drop, tank impact</td>
+            </tr>
+            <tr>
+                <td>Consistent baseline activity</td>
+                <td>Normal welfare state</td>
+                <td>Stable conditions, good water quality</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="key-finding">
+        <strong>Comparative Data:</strong> In Atlantic salmon, a crowding stress test caused a 50-fold increase in detected acoustic events (Jónsdóttir et al., 2024). A comparable surge in tank noise for juvenile cod indicates acute stress requiring immediate investigation.
+    </div>
+    
+    <h3>1.4 Background Noise Management</h3>
+    
+    <p>At the hatchery stage, managing background noise from pumps or machinery is critical. Excessive anthropogenic noise can:</p>
+    <ul>
+        <li>Interfere with cod behavior and communication</li>
+        <li>Elevate stress levels</li>
+        <li>Mask subtle acoustic cues from the fish</li>
+    </ul>
+    
+    <p>Ensuring a stable, low-noise environment helps cod develop natural behavior patterns and makes their own sounds more detectable.</p>
+    
+    <h2><span class="section-number">2.</span>Grow-out (Production) Phase</h2>
+    
+    <h3>2.1 Vocal Repertoire in Production Phase</h3>
+    
+    <p>In the grow-out phase (sea cages or large onshore tanks), cod are larger and their vocal repertoire becomes more pronounced. Atlantic cod of both sexes produce characteristic grunt sounds year-round during social interactions.</p>
+    
+    <h3>2.2 Aggression and Social Stress Monitoring</h3>
+    
+    <p>Grunts serve as signals during aggressive encounters and territorial displays in cod. In farm conditions, heightened aggression might occur due to high stocking density, uneven fish sizes, or competition for feed.</p>
+    
+    <div class="data-box">
+        <h4>Acoustic Indicators of Social Dynamics</h4>
+        <p><strong>Elevated grunt frequency:</strong> Indicates fighting or bullying in the population, potentially due to overcrowding or competition for feed</p>
+        <p><strong>"Knock" sounds:</strong> Additional aggressive vocalizations suggesting territorial disputes</p>
+        <p><strong>Stable, low aggression calls:</strong> Suggests calm social hierarchy—indicator of good welfare</p>
+    </div>
+    
+    <p><strong>Management applications:</strong> If hydrophones detect sustained increases in aggressive sound events, managers can investigate:</p>
+    <ul>
+        <li>Stocking density issues</li>
+        <li>Inadequate feed distribution</li>
+        <li>Other environmental stressors</li>
+    </ul>
+    
+    <h3>2.3 Feeding Behavior Analysis</h3>
+    
+    <p>Cod primarily feed by suction and do not rely on sound to locate food, but feeding activity leaves a clear acoustic signature.</p>
+    
+    <table>
+        <caption>Table 2: Acoustic Patterns During Feeding Events</caption>
+        <thead>
+            <tr>
+                <th>Acoustic Pattern</th>
+                <th>Normal Interpretation</th>
+                <th>Abnormal Interpretation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Brief rise in underwater sound intensity</td>
+                <td>Normal feeding response</td>
+                <td>Weak response may indicate health problems</td>
+            </tr>
+            <tr>
+                <td>Steady decline after feeding</td>
+                <td>Fish becoming satiated</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>Extended frantic noise during feeding</td>
+                <td>—</td>
+                <td>High competition or insufficient feed</td>
+            </tr>
+            <tr>
+                <td>Grunts after feeding ends</td>
+                <td>—</td>
+                <td>Fish fighting due to hunger or inequitable access</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="evidence-box">
+        <h4>Research Finding: Post-Feeding Aggression</h4>
+        <p>Classic study by Brawn (1961) showed that cod do not use sounds to compete directly for food, but food stimulation increased aggressive interactions shortly after feeding. This indicates that post-feeding hydrophone data showing many grunts or collision sounds may mean fish are fighting due to hunger or inequitable feed access.</p>
+    </div>
+    
+    <h3>2.4 Stress and Anomaly Detection</h3>
+    
+    <p>Beyond routine behavior, PAM can catch unanticipated problems in grow-out systems. An abrupt change in acoustic pattern may indicate:</p>
+    
+    <ul>
+        <li>Predator intrusions (seals, birds causing panic)</li>
+        <li>Environmental discomfort (pump failure altering water quality)</li>
+        <li>Equipment malfunctions before they cause major issues</li>
+    </ul>
+    
+    <div class="key-finding">
+        <strong>Automated Detection Capability:</strong> A 2024 study applied an algorithm during salmon crowding and recorded up to 1,000 acoustic events per 10 minutes at peak stress, versus approximately 20 events normally. The spike corresponded closely with biometric stress signals (elevated heart rate, frantic activity).
+    </div>
+    
+    <p>For cod in grow-out, similar real-time acoustic alarms enable early intervention before visible symptoms appear. Increased noise volatility is a telltale sign of distress, whereas a consistent daily acoustic profile implies stable conditions.</p>
+    
+    <h2><span class="section-number">3.</span>Broodstock and Spawning Phase</h2>
+    
+    <h3>3.1 Importance of Acoustic Monitoring for Broodstock</h3>
+    
+    <p>Broodstock cod (mature males and females kept for spawning) exhibit the most pronounced and purposeful use of vocalizations. Acoustic monitoring in this phase provides a window into reproductive behavior and welfare, which is crucial for spawning success.</p>
+    
+    <h3>3.2 Courtship and Spawning Indicators</h3>
+    
+    <p>Male Atlantic cod use grunt calls as part of their courtship rituals and mating competition. About 2-3 weeks before spawning, males become more active and aggressive, reinforcing dominance with grunts and visual displays.</p>
+    
+    <table>
+        <caption>Table 3: Acoustic Spawning Indicators in Cod Broodstock</caption>
+        <thead>
+            <tr>
+                <th>Acoustic Behavior</th>
+                <th>Timing</th>
+                <th>Function</th>
+                <th>Management Implication</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Regular male grunting, especially evenings</td>
+                <td>Throughout spawning season</td>
+                <td>Courtship occurring</td>
+                <td>Positive sign of reproductive activity</td>
+            </tr>
+            <tr>
+                <td>Daily rhythm of low-frequency pulses</td>
+                <td>After sunset during spawning</td>
+                <td>Conditions conducive to spawning</td>
+                <td>Confirms suitable environment</td>
+            </tr>
+            <tr>
+                <td>Prolonged "hum" during ventral mount</td>
+                <td>During actual spawning</td>
+                <td>Fertilization event</td>
+                <td>Spawning is occurring (even at night)</td>
+            </tr>
+            <tr>
+                <td>Absence of expected grunts</td>
+                <td>Expected spawning period</td>
+                <td>Spawning not occurring</td>
+                <td>Investigate sex ratios, temperature, substrate</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="evidence-box">
+        <h4>Field Validation</h4>
+        <p>Studies using passive acoustics have recorded male cod grunts nearly every day during known spawning periods, confirming the timing and occurrence of spawning aggregations (Hernandez et al., 2013). In hatchery settings, monitoring for these spawning calls tells managers when spawning is happening without disturbing the fish.</p>
+    </div>
+    
+    <h3>3.3 Mating Competition and Aggression Management</h3>
+    
+    <p>Cod mating involves competition among males, which can sometimes become intense. Acoustic cues help differentiate normal competitive behavior from problematic aggression.</p>
+    
+    <p><strong>Normal vs. excessive aggression:</strong></p>
+    <ul>
+        <li><strong>Normal:</strong> Moderate grunting and chasing among males ensures fittest males spawn</li>
+        <li><strong>Problematic:</strong> Non-stop grunts and sounds of physical scuffles may indicate imbalance (too many males, insufficient refuges)</li>
+    </ul>
+    
+    <p>By tracking frequency and pattern of aggression calls, hatchery managers can decide if intervention is needed, such as separating particularly aggressive individuals or adjusting male-to-female ratios.</p>
+    
+    <h3>3.4 Spawning Disruption Detection</h3>
+    
+    <p>Anomalies in broodstock sound patterns often reveal environmental problems:</p>
+    
+    <table>
+        <caption>Table 4: Acoustic Anomalies and Potential Causes in Broodstock</caption>
+        <thead>
+            <tr>
+                <th>Abnormal Pattern</th>
+                <th>Likely Cause</th>
+                <th>Required Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Normally vocal males become quiet</td>
+                <td>Masking noise, equipment vibrations</td>
+                <td>Check noise levels, reduce disturbance</td>
+            </tr>
+            <tr>
+                <td>Burst of alarm grunts followed by silence</td>
+                <td>Predator threat, sudden light, startling event</td>
+                <td>Identify and remove stressor</td>
+            </tr>
+            <tr>
+                <td>Absence of evening spawning calls</td>
+                <td>Poor spawning coordination, environmental issues</td>
+                <td>Check water quality, temperature, lighting</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="key-finding">
+        <strong>Key Principle:</strong> Consistent courtship acoustics equate to normal spawning progression, whereas either an absence or excess of noise signifies potential disruption in broodstock welfare requiring immediate investigation.
+    </div>
+    
+    <h2><span class="section-number">4.</span>Acoustic Monitoring Technology and AI Integration</h2>
+    
+    <h3>4.1 System Components</h3>
+    
+    <p>Implementing acoustic welfare monitoring for cod involves deploying underwater microphones (hydrophones) in tanks or cages and analyzing the data for key sound signatures. Modern systems increasingly use AI-driven software to interpret these sounds in real time.</p>
+    
+    <h3>4.2 Key Advantages for Farm Operators</h3>
+    
+    <h4>Non-Invasive, 24/7 Observation</h4>
+    
+    <p>Hydrophones listen to fish continuously without any need to handle or visually observe them, eliminating stress caused by capture or human presence. This is especially valuable in conditions of poor visibility—at night or in turbid water—where cameras are ineffective.</p>
+    
+    <div class="data-box">
+        <h4>Continuous Monitoring Capability</h4>
+        <p>Passive acoustic monitoring provides a constant stream of information on fish status that would be impossible to obtain manually. Operations receive data 24/7 without labor costs or fish disturbance.</p>
+    </div>
+    
+    <h4>Real-Time Welfare Alerts</h4>
+    
+    <p>Acoustic data can be analyzed on the fly to detect deviations from normal behavior. Statistical signal processing and AI models learn the baseline "acoustic signature" of healthy, unstressed cod populations and automatically flag anomalies.</p>
+    
+    <p><strong>Example alert triggers:</strong></p>
+    <ul>
+        <li>Sudden increases in grunt rates indicating potential stress</li>
+        <li>Splash events suggesting feeding problems</li>
+        <li>Changes in background sound revealing equipment failures</li>
+        <li>Unexpected silence during normal activity periods</li>
+    </ul>
+    
+    <div class="evidence-box">
+        <h4>Validation Data</h4>
+        <p>An AI-based detector correlated closely with heart-rate telemetry in salmon, demonstrating that automated acoustic event counts reflected fish stress in real time (Jónsdóttir et al., 2024). Early warning of issues can significantly reduce reaction time and prevent minor problems from becoming major losses.</p>
+    </div>
+    
+    <h4>Behavior Classification with Machine Learning</h4>
+    
+    <p>Advanced algorithms, including deep learning (e.g., convolutional neural networks), are now used to classify fish sounds and identify specific behaviors.</p>
+    
+    <table>
+        <caption>Table 5: Machine Learning Applications in Cod Acoustic Monitoring</caption>
+        <thead>
+            <tr>
+                <th>Application</th>
+                <th>Capability</th>
+                <th>Accuracy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sound classification</td>
+                <td>Differentiate grunts from other call types</td>
+                <td>&gt;90% in experimental trials</td>
+            </tr>
+            <tr>
+                <td>Behavioral event detection</td>
+                <td>Identify feeding, aggression, courtship</td>
+                <td>Proven in multiple species</td>
+            </tr>
+            <tr>
+                <td>Automated grunt counting</td>
+                <td>Quantify spawning activity over time</td>
+                <td>Emerging capability for cod</td>
+            </tr>
+            <tr>
+                <td>Anomaly detection</td>
+                <td>Flag unusual patterns requiring investigation</td>
+                <td>Real-time alerts possible</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p>In practice, an AI system listening to a cod tank can continuously log events such as "feeding happening now," "aggressive interaction detected," or "courtship call detected," providing a rich timeline of behavioral data.</p>
+    
+    <h4>Enhanced Feeding and Operations Management</h4>
+    
+    <p>AI-enabled acoustic monitoring not only flags problems but also helps optimize routine operations. By analyzing long-term patterns, machine learning can reveal trends such as:</p>
+    
+    <ul>
+        <li>Daily or seasonal changes in cod sound production</li>
+        <li>Hunger cycles and optimal feeding times</li>
+        <li>Mating season progression</li>
+        <li>Growth stage transitions</li>
+    </ul>
+    
+    <p>Farmers can use these insights to adjust feeding regimes (feeding when fish naturally become active) or time management interventions (grading, transfers) for when fish are least stressed.</p>
+    
+    <h4>Data-Driven Welfare Metrics</h4>
+    
+    <p>One of the greatest advantages is creation of objective, data-driven metrics for fish welfare. Instead of relying solely on sporadic visual checks, production managers get quantifiable indicators:</p>
+    
+    <ul>
+        <li>Average grunt count per hour</li>
+        <li>Feeding noise intensity curve</li>
+        <li>Anomaly event frequency per day</li>
+        <li>Spawning call patterns over season</li>
+    </ul>
+    
+    <div class="key-finding">
+        <strong>Certification and Audit Value:</strong> As aquaculture moves toward welfare auditing and certification, acoustic records serve as proof of welfare status over time. AI analytics can benchmark a farm's sound profile against known healthy standards.
+    </div>
+    
+    <h2><span class="section-number">5.</span>Implementation Guide for Cod Farmers</h2>
+    
+    <h3>5.1 System Deployment Strategy</h3>
+    
+    <h4>Phase 1: Pilot Installation (1-3 months)</h4>
+    <ul>
+        <li>Install 1-2 hydrophones in selected tanks/cages</li>
+        <li>Record baseline acoustic data across different times and conditions</li>
+        <li>Correlate sounds with known events (feeding, grading, spawning attempts)</li>
+        <li>Identify normal acoustic profile for your specific operation</li>
+    </ul>
+    
+    <h4>Phase 2: Full Deployment (3-6 months)</h4>
+    <ul>
+        <li>Expand to all critical production units (hatchery, grow-out, broodstock)</li>
+        <li>Integrate acoustic data into daily monitoring dashboards</li>
+        <li>Train staff on interpreting acoustic alerts</li>
+        <li>Establish response protocols for different alert types</li>
+    </ul>
+    
+    <h4>Phase 3: Optimization (6+ months)</h4>
+    <ul>
+        <li>Refine AI models based on your specific cod population</li>
+        <li>Develop predictive models linking acoustic patterns to outcomes</li>
+        <li>Use historical acoustic data to optimize feeding schedules</li>
+        <li>Document welfare improvements for certification purposes</li>
+    </ul>
+    
+    <h3>5.2 Cost-Benefit Analysis</h3>
+    
+    <table>
+        <caption>Table 6: Estimated Costs for Cod Acoustic Monitoring System</caption>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Cost Range</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hydrophone units (per unit)</td>
+                <td>€1,500-4,000</td>
+                <td>Depends on range and features</td>
+            </tr>
+            <tr>
+                <td>Installation per site</td>
+                <td>€2,000-5,000</td>
+                <td>One-time cost</td>
+            </tr>
+            <tr>
+                <td>Analysis software (annual)</td>
+                <td>€5,000-15,000</td>
+                <td>AI-enabled platforms cost more</td>
+            </tr>
+            <tr>
+                <td>Maintenance (annual)</td>
+                <td>€1,000-3,000</td>
+                <td>Data retrieval, cleaning, calibration</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>5.3 Expected Benefits</h3>
+    
+    <p><strong>For a typical cod operation producing 500-1,000 tons annually:</strong></p>
+    
+    <ul>
+        <li><strong>Early disease detection:</strong> 1-2% mortality reduction = €50,000-150,000 additional revenue (at €8-10/kg)</li>
+        <li><strong>Feeding optimization:</strong> 5% improvement in feed conversion = €30,000-80,000 savings</li>
+        <li><strong>Broodstock management:</strong> 10% improvement in egg quality/quantity = significant hatchery value</li>
+        <li><strong>Labor savings:</strong> Reduced need for manual observation, especially night checks</li>
+    </ul>
+    
+    <p><strong>Return on investment:</strong> Typical payback period of 1-2 years through mortality reduction and feed optimization alone.</p>
+    
+    <h2><span class="section-number">6.</span>Conclusion</h2>
+    
+    <p>Passive acoustic monitoring of cod vocalizations represents a scientifically validated, practical approach to continuous welfare monitoring across all production phases. The technology addresses fundamental challenges in cod aquaculture: detecting problems before they become visible, optimizing feeding without stress, and ensuring successful spawning.</p>
+    
+    <p><strong>Key takeaways for cod farmers:</strong></p>
+    
+    <ul>
+        <li>Cod produce characteristic vocalizations linked to feeding, aggression, stress, and spawning</li>
+        <li>Acoustic monitoring works across all life stages, from juvenile feeding detection to broodstock spawning confirmation</li>
+        <li>AI-driven analysis enables 24/7 automated monitoring with real-time alerts</li>
+        <li>System costs (€10,000-30,000 for typical operation) are small relative to mortality reduction and optimization benefits</li>
+        <li>Technology provides objective welfare metrics for certification and continuous improvement</li>
+    </ul>
+    
+    <p>As aquaculture moves toward smart farming and precision management, acoustic monitoring offers cod farmers a competitive advantage through better welfare, optimized operations, and documented sustainability. The science is proven, the technology is available, and early adopters are already seeing operational benefits.</p>
+    
+    <!-- References -->
+    <div class="references">
+        <h2>References</h2>
+        
+        <div class="reference">[1] Brawn, V.M. (1961). Sound production by the cod (Gadus callarias L.). <em>Behaviour</em>, 18(4), 239-255. <a href="https://cir.nii.ac.jp/crid/1360011145476674944" target="_blank">https://cir.nii.ac.jp/crid/1360011145476674944</a></div>
+        
+        <div class="reference">[2] Hawkins, A.D., & Popper, A.N. (2020). Coding of auditory information in the cod. <em>Journal of the Acoustical Society of America</em>, 148(5).</div>
+        
+        <div class="reference">[3] Rosten, C.M., et al. (2022). Acoustic environment of aquaculture net-pens varies with feeding status of Atlantic salmon. <em>Aquaculture</em>, 563, 738949. <a href="https://www.researchgate.net/publication/364394882" target="_blank">https://www.researchgate.net/publication/364394882</a></div>
+        
+        <div class="reference">[4] Jónsdóttir, K.E., et al. (2024). Detection of a stress related acoustic signature by PAM in Atlantic salmon farming. <em>Aquacultural Engineering</em>, 107, 102472. <a href="https://www.sciencedirect.com/science/article/pii/S0144860924000839" target="_blank">https://www.sciencedirect.com/science/article/pii/S0144860924000839</a></div>
+        
+        <div class="reference">[5] Almunia, J., et al. (2024). Aquariums as research platforms: Characterizing fish sounds. <em>Journal of Zoological and Botanical Gardens</em>, 5(4). <a href="https://www.mdpi.com/2673-5636/5/4/42" target="_blank">https://www.mdpi.com/2673-5636/5/4/42</a></div>
+        
+        <div class="reference">[6] Rowe, S., & Hutchings, J.A. (2006). Sound production by Atlantic cod during spawning. <em>Transactions of the American Fisheries Society</em>, 135(2), 529-538. <a href="https://onlinelibrary.wiley.com/doi/10.1577/T04-061.1" target="_blank">https://onlinelibrary.wiley.com/doi/10.1577/T04-061.1</a></div>
+        
+        <div class="reference">[7] Stanley, J.A., et al. (2017). Calls of the Atlantic Cod: does captivity restrict their vocal repertoire? <em>Bioacoustics</em>, 26(2), 153-169. <a href="https://www.researchgate.net/publication/233334715" target="_blank">https://www.researchgate.net/publication/233334715</a></div>
+        
+        <div class="reference">[8] Hernandez, K.M., et al. (2013). Acoustic monitoring of Atlantic cod in Massachusetts Bay: implications for management. <em>ICES Journal of Marine Science</em>, 70(3), 628-635.</div>
+        
+        <div class="reference">[9] Mouy, X., et al. (2024). Automatic detection of unidentified fish sounds: traditional vs. deep learning. <em>Frontiers in Remote Sensing</em>, 5, 1439995. <a href="https://www.frontiersin.org/journals/remote-sensing/articles/10.3389/frsen.2024.1439995/full" target="_blank">https://www.frontiersin.org/journals/remote-sensing/articles/10.3389/frsen.2024.1439995/full</a></div>
+        
+        <div class="reference">[10] Fraunhofer IDMT. (2023). Acoustic monitoring for aquaculture systems. <em>Project report</em>. <a href="https://www.idmt.fraunhofer.de/en/institute/projects-products/projects/acoustic-monitoring-aquaculture-systems.html" target="_blank">https://www.idmt.fraunhofer.de/en/institute/projects-products/projects/acoustic-monitoring-aquaculture-systems.html</a></div>
+        
+        <div class="reference">[11] Parmentier, E., et al. (2014). Sound production in Sciaenops ocellatus: developing acoustic cues in aquaculture. <em>Aquaculture</em>, 432, 204-211.</div>
+        
+        <div class="reference">[12] Automatic fish sounds classification. <em>ResearchGate</em>. <a href="https://www.researchgate.net/publication/302069998_Automatic_fish_sounds_classification" target="_blank">https://www.researchgate.net/publication/302069998</a></div>
+    </div>
+    
+</body>
+</html>

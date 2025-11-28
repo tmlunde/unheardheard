@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acoustic Monitoring and Salmon Welfare - Technical White Paper</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            color: #2D3339;
+            background-color: #FDFCFB;
+            line-height: 1.7;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .header {
+            border-bottom: 2px solid #0C1A27;
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .document-type {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #0C1A27;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .meta {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: #f5f5f5;
+            border-left: 4px solid #0C1A27;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .executive-summary h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0C1A27;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .executive-summary p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .executive-summary p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Typography */
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #0C1A27;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1B2E3A;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2D3339;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #2D3339;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            color: #2D3339;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 15px;
+        }
+        
+        table caption {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0C1A27;
+            text-align: left;
+            margin-bottom: 10px;
+            caption-side: top;
+        }
+        
+        th {
+            background: #0C1A27;
+            color: #FDFCFB;
+            padding: 12px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        /* Data boxes */
+        .data-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .data-box h4 {
+            margin-top: 0;
+            color: #0C1A27;
+        }
+        
+        /* References */
+        .references {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .references h2 {
+            margin-top: 0;
+        }
+        
+        .reference {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            text-indent: -25px;
+        }
+        
+        .reference a {
+            color: #0C1A27;
+            text-decoration: none;
+        }
+        
+        .reference a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Key findings box */
+        .key-finding {
+            border-left: 4px solid #4A645A;
+            background: #f9f9f9;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        
+        .key-finding strong {
+            color: #0C1A27;
+        }
+        
+        /* Section numbers */
+        .section-number {
+            color: #999;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        /* Evidence box */
+        .evidence-box {
+            background: #fff;
+            border: 1px solid #4A645A;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .evidence-box h4 {
+            margin-top: 0;
+            color: #4A645A;
+            font-size: 16px;
+        }
+        
+        .evidence-box p {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .evidence-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                padding: 20px;
+                max-width: 100%;
+            }
+            
+            .executive-summary {
+                page-break-inside: avoid;
+            }
+            
+            table {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            table {
+                font-size: 13px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="document-type">Technical White Paper</div>
+        <h1>Acoustic Monitoring and Salmon Welfare</h1>
+        <div class="subtitle">Real-time behavioral monitoring in net pens, RAS facilities, and surrounding ecosystems</div>
+        <div class="meta">UnheardHeard • 2025</div>
+    </div>
+    
+    <!-- Executive Summary -->
+    <div class="executive-summary">
+        <h2>Executive Summary</h2>
+        <p>Salmon farmers are increasingly using underwater acoustic monitoring (hydrophones) to assess fish behavior and welfare. Research shows that Atlantic salmon produce distinct sounds during activities like feeding, jumping, and stress responses.</p>
+        <p>By "listening" to fish vocalizations and movement noises, farmers can gain real-time insights into hunger levels, aggression, stress, and environmental interactions. Advanced AI and machine learning algorithms can automatically classify these acoustic signals and detect anomalies, enabling proactive welfare management.</p>
+        <p>This white paper outlines three key areas for applying acoustic monitoring in salmon aquaculture: (1) inside net pens, (2) in land-based recirculating systems, and (3) in the surrounding ecosystem.</p>
+    </div>
+    
+    <!-- Main Content -->
+    
+    <h2><span class="section-number">1.</span>Monitoring Salmon Behavior Inside Net Pens (Sea Cages)</h2>
+    
+    <h3>1.1 Continuous Welfare Surveillance</h3>
+    
+    <p>Hydrophones deployed in sea cages can capture fish-generated sounds for continuous welfare monitoring. In open-net pens, passive acoustic monitoring provides a 24/7 window into fish behavior beneath the surface, even at night or in turbid waters.</p>
+    
+    <div class="evidence-box">
+        <h4>Research Finding: Acoustic Signatures</h4>
+        <p>Studies have found that Atlantic salmon noticeably alter the soundscape of a net pen. An empty pen is much quieter than one full of fish, and daily sound "fingerprints" change with the feeding schedule (Rosten et al., 2022). By comparing acoustic patterns over time, farm staff can infer the overall condition and activity of the stock.</p>
+    </div>
+    
+    <h3>1.2 Feeding Activity Detection</h3>
+    
+    <p>During feeding times, salmon create a distinct acoustic signature. Pellets hitting the water and fish striking at feed generate broadband noise, with the acoustic fingerprint mirroring the fish's feeding status.</p>
+    
+    <table>
+        <caption>Table 1: Acoustic Characteristics of Feeding Behavior</caption>
+        <thead>
+            <tr>
+                <th>Feeding State</th>
+                <th>Acoustic Pattern</th>
+                <th>Management Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Active feeding</td>
+                <td>Louder, more complex soundscape</td>
+                <td>Continue feeding until acoustic signature changes</td>
+            </tr>
+            <tr>
+                <td>Satiation reached</td>
+                <td>Soundscape quiets down</td>
+                <td>Stop feeding to avoid waste and water quality issues</td>
+            </tr>
+            <tr>
+                <td>Poor appetite</td>
+                <td>Weak acoustic response during feeding</td>
+                <td>Investigate water quality, health, or feed palatability</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p><strong>Practical application:</strong> Automated systems can detect when appetite declines and avoid overfeeding, improving feed conversion and reducing waste. In trials, hungry salmon produced different frequency sounds than full salmon, indicating that listening could gauge appetite levels.</p>
+    
+    <h3>1.3 Stress and Agitation Monitoring</h3>
+    
+    <p>Unusual spikes in underwater noise can signify that fish are distressed or excited. Research provides quantitative evidence of stress-related acoustic changes.</p>
+    
+    <div class="data-box">
+        <h4>Stress Detection: Quantified Evidence</h4>
+        <p><strong>Normal conditions:</strong> Approximately 20 acoustic events per 10 minutes</p>
+        <p><strong>Crowding stress:</strong> Up to 1,000 acoustic events per 10 minutes</p>
+        <p><strong>Magnitude:</strong> 50-fold increase in sound production during stress</p>
+        <p><strong>Correlation:</strong> Elevated heart rates and frantic movement confirmed through telemetry</p>
+    </div>
+    
+    <div class="evidence-box">
+        <h4>Study: Stress-Related Acoustic Signature (Jónsdóttir et al., 2024)</h4>
+        <p>A recent study monitored salmon during a crowding procedure (when fish are confined for transfer) and detected an extreme surge in acoustic event rates. This 50-fold increase correlated with elevated heart rates and frantic movement, confirming that stressful events trigger audible commotion.</p>
+    </div>
+    
+    <p>Sudden disturbances (predator presence, human activity) can lead to frantic swimming, jumping, or collisions with the cage, all creating characteristic sounds. Monitoring these acoustic bursts gives farmers early warning of acute stress or crowding-related welfare risks.</p>
+    
+    <h3>1.4 Detection of Anomalous Behavior</h3>
+    
+    <p>Atlantic salmon are generally social schoolers with less vocal aggression than some species, but intense chasing or panicked schooling can be picked up acoustically.</p>
+    
+    <p><strong>Catalogued acoustic events include:</strong></p>
+    <ul>
+        <li>Low-frequency "pulse" sounds associated with fast collisions (fish bumping into nets or tank walls)</li>
+        <li>Large jump sounds when fish breach the surface</li>
+        <li>Impact sounds indicating potential injury risk or exhaustion</li>
+    </ul>
+    
+    <p>An unusual frequency or pattern of these sounds may indicate bullying, panic, or suboptimal conditions. By establishing a baseline sound profile for calm, healthy fish, AI-driven algorithms can flag deviations.</p>
+    
+    <h3>1.5 Technology Implementation</h3>
+    
+    <p>The advantage of hydrophone monitoring in net pens is that it covers the entire population continuously, overcoming challenges of observing fish in large, opaque environments.</p>
+    
+    <p><strong>System components:</strong></p>
+    <ul>
+        <li>Multiple underwater microphones distributed throughout the pen</li>
+        <li>Cloud-connected data loggers for continuous streaming</li>
+        <li>Machine learning algorithms for pattern recognition</li>
+        <li>Dashboard interfaces showing welfare metrics in real-time</li>
+    </ul>
+    
+    <div class="key-finding">
+        <strong>AI Detection Success:</strong> Research successfully used automatic detection algorithms to identify unique "acoustic signatures" of crowding stress in real time. Other studies employed clustering algorithms to classify different salmon sounds by behavior category.
+    </div>
+    
+    <h2><span class="section-number">2.</span>Acoustic Monitoring in Land-Based RAS Facilities</h2>
+    
+    <h3>2.1 Advantages in Closed Systems</h3>
+    
+    <p>Closed-containment facilities like recirculating aquaculture systems (RAS) benefit greatly from acoustic monitoring. In RAS tanks, water is often turbid or dark, limiting visual observation. Meanwhile, pumps, aerators, and filtration units contribute background noise.</p>
+    
+    <div class="evidence-box">
+        <h4>Why Acoustics Work Well in RAS</h4>
+        <p>Passive acoustic monitoring may be especially useful in RAS, as it bypasses water visibility issues and operates non-invasively around the clock. Despite background machinery noise, useful behavioral signals can be extracted from the tank soundscape.</p>
+    </div>
+    
+    <h3>2.2 Feeding and Feed Withdrawal Detection</h3>
+    
+    <p>Recent experiments with Atlantic salmon parr in RAS tanks have characterized the tank "soundscape" and its changes under different conditions.</p>
+    
+    <table>
+        <caption>Table 2: Acoustic Frequencies in RAS Feeding Events</caption>
+        <thead>
+            <tr>
+                <th>Sound Source</th>
+                <th>Frequency Range</th>
+                <th>Behavioral Indication</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pellet dispenser (pellets hitting water)</td>
+                <td>1.7-4.0 kHz</td>
+                <td>Feed delivery occurring</td>
+            </tr>
+            <tr>
+                <td>Fish feeding activity (strikes and splashes)</td>
+                <td>6.5-9.4 kHz</td>
+                <td>Active feeding behavior</td>
+            </tr>
+            <tr>
+                <td>Reduced complexity during feed withdrawal</td>
+                <td>Across spectrum</td>
+                <td>Satiation or fasting state</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Quantitative Acoustic Indices</h4>
+    
+    <p>Researchers identified measurable changes in acoustic indices during feeding cycles:</p>
+    
+    <ul>
+        <li><strong>Acoustic Complexity Index (ACI):</strong> Spikes during active feeding as fish compete for feed</li>
+        <li><strong>Entropy-based indices:</strong> Drop during feeding, reflecting organized bursts of noise</li>
+        <li><strong>Feed withdrawal effect:</strong> Feeding-related sounds diminish and acoustic indices stabilize</li>
+    </ul>
+    
+    <div class="key-finding">
+        <strong>Practical Outcome:</strong> A hydrophone can detect whether fish are actively feeding or not. If a scheduled feeding yields little noise, it may indicate low appetite or a problem (feed not reaching fish, suboptimal water quality). This allows farmers to match feeding to appetite in real time, avoiding both waste and water quality degradation from uneaten feed.
+    </div>
+    
+    <h3>2.3 Behavioral and Welfare Indicators in Tanks</h3>
+    
+    <p>Even in tank environments, salmon exhibit surface behaviors that create audible cues. One study documented thousands of distinct sound events in RAS tanks and grouped them by type.</p>
+    
+    <table>
+        <caption>Table 3: Sound Event Types in RAS Tanks</caption>
+        <thead>
+            <tr>
+                <th>Sound Type</th>
+                <th>Proportion</th>
+                <th>Associated Behavior</th>
+                <th>Welfare Implication</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Short "pulse" sounds</td>
+                <td>~33%</td>
+                <td>Collisions with walls</td>
+                <td>Concern: may indicate escape attempts or agitation</td>
+            </tr>
+            <tr>
+                <td>Longer "surface" splash sounds</td>
+                <td>~20%</td>
+                <td>Gulping air, jumping</td>
+                <td>May signal suboptimal water conditions if frequent</td>
+            </tr>
+            <tr>
+                <td>Low-frequency collision pulses</td>
+                <td>Variable</td>
+                <td>Strong collisions with structures</td>
+                <td>Risk of injury; requires investigation</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p>By tracking the frequency of these sounds, farm managers can infer if fish are becoming skittish. An increase in collision sounds prompts checks on tank conditions (oxygen, CO₂, lighting) before fish are injured. Conversely, a calm acoustic profile with only routine feeding noise suggests fish are unstressed.</p>
+    
+    <h3>2.4 System Performance Monitoring</h3>
+    
+    <p>Beyond fish behavior, the acoustic environment can reflect RAS system functioning. Abnormal mechanical sounds or changes in ambient noise might signal equipment issues, but more subtly, fish reactions can reveal system stress.</p>
+    
+    <p><strong>Example scenarios:</strong></p>
+    <ul>
+        <li>Biofilter problem degrades water quality → Fish show altered swimming patterns (more gasps, jumps) → Registers acoustically</li>
+        <li>Pump malfunction → Changes in ambient noise → Fish behavioral response detected</li>
+        <li>Temperature fluctuation → Altered fish activity levels → Acoustic pattern changes</li>
+    </ul>
+    
+    <div class="evidence-box">
+        <h4>Early Warning System</h4>
+        <p>Researchers report that soundscape monitoring can help detect deviations in system performance that threaten welfare, effectively acting as an early warning. Integrating hydrophones with RAS control systems could eventually allow automatic adjustments (for example, modulating pump speeds at night to reduce noise if fish show chronic stress signals).</p>
+    </div>
+    
+    <h3>2.5 AI Analysis in RAS</h3>
+    
+    <p>As in sea cages, AI-powered analysis is key to interpreting complex audio data from RAS. Unsupervised machine learning techniques have successfully clustered sound events and distinguished different behavior-related sounds in tank recordings.</p>
+    
+    <p><strong>Capabilities of automated systems:</strong></p>
+    <ul>
+        <li>Automatically categorize sounds as "feeding," "jumping," "collision," etc.</li>
+        <li>Provide live summary of fish activity</li>
+        <li>Learn normal daily acoustic rhythm of a RAS tank</li>
+        <li>Alert staff to deviations (absent feeding sounds, sudden distress pulses)</li>
+    </ul>
+    
+    <h2><span class="section-number">3.</span>Biodiversity and Ecosystem Impacts Outside Sea Cages</h2>
+    
+    <h3>3.1 Extending Monitoring Beyond the Farm</h3>
+    
+    <p>Acoustic monitoring isn't just useful inside the farm—it extends to understanding and mitigating the farm's interaction with the surrounding ecosystem. By deploying hydrophones around farm sites, managers can monitor wildlife activity and ensure farm noise stays within acceptable levels.</p>
+    
+    <h3>3.2 Wild Fish Aggregations</h3>
+    
+    <p>Open-net pens often act as fish aggregating devices (FADs), attracting wild fishes such as cod, saithe, and mackerel that are drawn to leftover feed and shelter around the structures. These wild fish congregations can be substantial and persistent, altering local biodiversity.</p>
+    
+    <p><strong>Acoustic monitoring applications:</strong></p>
+    <ul>
+        <li>Document wild fish aggregations around farms</li>
+        <li>Detect which wild species are present through characteristic sounds (grunts, clicks)</li>
+        <li>Correlate wild fish activity with farm feeding schedules</li>
+        <li>Provide index of wild fish abundance and behavior near cages</li>
+    </ul>
+    
+    <div class="data-box">
+        <h4>Farm as Artificial Reef</h4>
+        <p>Hydrophone data can inform farmers about the farm's ecological role. Studies have noted that feeding times at salmon farms align with spikes in wild fish activity, as wild fish capitalize on feed pellets that escape the cage. This data helps assess both positive effects (habitat provisioning) and potential negatives (altered species composition, biosecurity concerns).</p>
+    </div>
+    
+    <h3>3.3 Predator Interactions</h3>
+    
+    <p>Predatory animals such as seals, sea lions, and birds are naturally attracted to stocked cages. Acoustic monitoring aids in managing these interactions.</p>
+    
+    <table>
+        <caption>Table 4: Acoustic Detection of Predator Interactions</caption>
+        <thead>
+            <tr>
+                <th>Predator Type</th>
+                <th>Acoustic Signal</th>
+                <th>Management Response</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Marine mammals (seals)</td>
+                <td>Seal calls detected on hydrophones</td>
+                <td>Deploy deterrents, inspect nets</td>
+            </tr>
+            <tr>
+                <td>Porpoises/dolphins</td>
+                <td>Echolocation clicks</td>
+                <td>Monitor presence, adjust operations if needed</td>
+            </tr>
+            <tr>
+                <td>Birds (diving)</td>
+                <td>Sudden burst of frantic fish movement</td>
+                <td>Check nets, consider bird deterrents</td>
+            </tr>
+            <tr>
+                <td>Seal attacks</td>
+                <td>Frantic percussive fish movements</td>
+                <td>Immediate response to protect stock</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Acoustic Deterrent Devices (ADDs): Use with Caution</h4>
+    
+    <p>Traditional anti-predator measures like acoustic deterrent devices (seal scarers) introduce loud artificial noise. These devices emit high-amplitude sounds to drive away seals, but they can impact other wildlife.</p>
+    
+    <div class="key-finding">
+        <strong>Environmental Impact Study:</strong> Research modeling multiple ADDs along Scotland's coast found that combined noise could cause temporary hearing loss in harbour porpoises up to 28 km away from farms. This highlights the importance of using acoustic deterrents judiciously and considering non-acoustic alternatives to protect the broader ecosystem.
+    </div>
+    
+    <h3>3.4 Noise Levels and Environmental Compliance</h3>
+    
+    <p>Routine farm operations (boat traffic, generators, automatic feeders) contribute to the underwater soundscape. While typical operational noise tends to be localized, farms near sensitive habitats should monitor noise levels.</p>
+    
+    <p><strong>Noise management benefits:</strong></p>
+    <ul>
+        <li>Ensure compliance with regulations</li>
+        <li>Identify if certain activities raise background noise unnecessarily</li>
+        <li>Protect fish welfare (chronic noise elevates cortisol, suppresses growth and reproduction)</li>
+        <li>Minimize disturbance to wild neighbors</li>
+    </ul>
+    
+    <table>
+        <caption>Table 5: Noise Reduction Strategies for Salmon Farms</caption>
+        <thead>
+            <tr>
+                <th>Noise Source</th>
+                <th>Impact</th>
+                <th>Mitigation Strategy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Boat traffic</td>
+                <td>Localized but frequent</td>
+                <td>Use electric boats, schedule trips efficiently</td>
+            </tr>
+            <tr>
+                <td>Feed barges/pumps</td>
+                <td>Continuous during feeding</td>
+                <td>Install dampeners, use quieter equipment</td>
+            </tr>
+            <tr>
+                <td>Construction/maintenance</td>
+                <td>Intense but temporary</td>
+                <td>Schedule during periods away from sensitive times</td>
+            </tr>
+            <tr>
+                <td>Generators</td>
+                <td>Continuous background</td>
+                <td>Acoustic insulation, alternative energy sources</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="evidence-box">
+        <h4>Noise Effects on Salmon</h4>
+        <p>Studies show repeated loud noise elevates cortisol and can suppress growth and reproduction in salmon. Thus, reducing excessive noise benefits both farmed fish and wild neighbors. Some farms are already using electric boats and dampeners to cut noise pollution.</p>
+    </div>
+    
+    <h3>3.5 Environmental Acoustic Monitoring</h3>
+    
+    <p>Beyond managing noise, passive acoustics is a powerful tool for ecosystem monitoring around farms. Many marine organisms produce species-specific sounds, effectively "acoustic fingerprints" of their presence.</p>
+    
+    <p><strong>What can be detected:</strong></p>
+    <ul>
+        <li>Calls of endangered whales</li>
+        <li>Spawning choruses of reef fish</li>
+        <li>Snapping shrimp activity (indicator of habitat health)</li>
+        <li>Absence of expected natural sounds (potential ecological issue)</li>
+    </ul>
+    
+    <div class="data-box">
+        <h4>Farm as Marine Listening Post</h4>
+        <p>Audio recordings can reveal which species are present or absent, their activity patterns, and interactions. For example, if hydrophones record fewer snapping shrimp snaps or fish calls than usual, it might signal a decline in local marine life requiring investigation. Conversely, consistent recordings of certain wild fish noises might indicate the farm area is supporting those populations.</p>
+    </div>
+    
+    <p>Such data can feed into environmental impact assessments and adaptive management. If acoustic evidence shows undue impact (marine mammals avoiding a corridor due to farm noise), farmers can implement mitigation (noise reduction, temporal limits on loud operations).</p>
+    
+    <h2><span class="section-number">4.</span>Implementation Framework for Salmon Farmers</h2>
+    
+    <h3>4.1 System Deployment Strategy</h3>
+    
+    <h4>Phase 1: Initial Assessment (1-2 months)</h4>
+    <ul>
+        <li>Install pilot hydrophones in 1-2 net pens or RAS tanks</li>
+        <li>Record baseline acoustic data across different operational conditions</li>
+        <li>Identify normal acoustic patterns for your specific operation</li>
+        <li>Correlate sounds with known events (feeding, grading, stress events)</li>
+    </ul>
+    
+    <h4>Phase 2: Full Implementation (3-6 months)</h4>
+    <ul>
+        <li>Expand to all production units (sea cages, RAS tanks)</li>
+        <li>Deploy perimeter hydrophones for ecosystem monitoring</li>
+        <li>Integrate acoustic data into operations dashboards</li>
+        <li>Train staff on interpreting acoustic alerts and patterns</li>
+    </ul>
+    
+    <h4>Phase 3: Optimization (6-12 months)</h4>
+    <ul>
+        <li>Refine AI models based on your farm's acoustic signatures</li>
+        <li>Develop predictive models linking acoustic patterns to welfare outcomes</li>
+        <li>Optimize feeding schedules based on acoustic appetite indicators</li>
+        <li>Document environmental impact reductions for regulatory compliance</li>
+    </ul>
+    
+    <h3>4.2 Cost-Benefit Analysis</h3>
+    
+    <table>
+        <caption>Table 6: Estimated Costs for Salmon Acoustic Monitoring System</caption>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Cost Range</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hydrophone units (per unit)</td>
+                <td>€2,000-5,000</td>
+                <td>Marine-grade with data logging</td>
+            </tr>
+            <tr>
+                <td>Installation (per site)</td>
+                <td>€3,000-8,000</td>
+                <td>Includes mounting and cabling</td>
+            </tr>
+            <tr>
+                <td>AI analysis platform (annual)</td>
+                <td>€10,000-25,000</td>
+                <td>Cloud-based processing and dashboards</td>
+            </tr>
+            <tr>
+                <td>Maintenance (annual)</td>
+                <td>€2,000-5,000</td>
+                <td>Data retrieval, cleaning, calibration</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>4.3 Expected Returns</h3>
+    
+    <p><strong>For a typical salmon operation producing 2,000-4,000 tons annually:</strong></p>
+    
+    <ul>
+        <li><strong>Feed optimization:</strong> 3-5% improvement in FCR = €150,000-400,000 annual savings</li>
+        <li><strong>Mortality reduction:</strong> 1-2% through early stress detection = €140,000-560,000 additional revenue (at €7/kg)</li>
+        <li><strong>Labor savings:</strong> Reduced manual monitoring = €30,000-60,000 annually</li>
+        <li><strong>Compliance benefits:</strong> Documented environmental stewardship supporting licensing</li>
+    </ul>
+    
+    <p><strong>Return on investment:</strong> Typical payback period of 6-18 months through feed optimization and mortality reduction combined.</p>
+    
+    <h2><span class="section-number">5.</span>Conclusion</h2>
+    
+    <p>The use of acoustic monitoring in salmon aquaculture offers a cutting-edge, real-time approach to improve welfare and management. Hydrophones act as the "ears" of the farmer beneath the water's surface—detecting feeding behavior, stress events, and the complex interactions within the ecosystem around the cages.</p>
+    
+    <p><strong>Key takeaways for salmon farmers:</strong></p>
+    
+    <ul>
+        <li>Atlantic salmon produce distinct, measurable sounds during feeding, stress, and normal activity</li>
+        <li>Acoustic monitoring works effectively in both net pens and RAS facilities, overcoming visibility limitations</li>
+        <li>AI-driven analysis enables 24/7 automated monitoring with real-time welfare alerts</li>
+        <li>50-fold increase in acoustic events during stress provides early warning system</li>
+        <li>System costs (€20,000-50,000 for typical operation) deliver ROI within 6-18 months</li>
+        <li>Ecosystem monitoring around farms supports environmental compliance and stewardship</li>
+    </ul>
+    
+    <p>Coupled with AI analysis, this technology distills vast audio data into actionable insights: when to feed, when fish are stressed, and how the farm's presence influences the surrounding marine environment. As the industry moves toward smarter and more sustainable practices, passive acoustic monitoring provides a cost-effective, non-intrusive means to listen to the stock and environment, ensuring healthier fish and a lower-impact farming operation.</p>
+    
+    <p>By heeding what the salmon and their environment are saying, production managers can make more informed decisions to boost performance, welfare, and ecological stewardship in modern salmon farming.</p>
+    
+    <!-- References -->
+    <div class="references">
+        <h2>References</h2>
+        
+        <div class="reference">[1] Helberg, G.A.N., et al. (2025). Characterising sounds associated with Atlantic salmon (Salmo salar) surface activity in tanks and their implications for behavioural monitoring using passive acoustics. <em>SSRN Electronic Journal</em>. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5358436" target="_blank">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5358436</a></div>
+        
+        <div class="reference">[2] Rosten, C.M., et al. (2022). Acoustic environment of aquaculture net-pens varies with feeding status of Atlantic salmon (Salmo salar). <em>Aquaculture</em>, 563, 738949. <a href="https://www.sintef.no/en/publications/publication/2063695/" target="_blank">https://www.sintef.no/en/publications/publication/2063695/</a></div>
+        
+        <div class="reference">[3] Framsenteret. (2024). Researchers listen to salmon. <em>Fram Centre News</em>. <a href="https://framsenteret.no/researchers-listen-to-salmon/" target="_blank">https://framsenteret.no/researchers-listen-to-salmon/</a></div>
+        
+        <div class="reference">[4] Jónsdóttir, K.E., et al. (2024). Detection of a stress related acoustic signature by passive acoustic monitoring in Atlantic salmon farming. <em>Aquacultural Engineering</em>, 107, 102472. <a href="https://www.sciencedirect.com/science/article/pii/S0144860924000839" target="_blank">https://www.sciencedirect.com/science/article/pii/S0144860924000839</a></div>
+        
+        <div class="reference">[5] Kolarevic, J., et al. (2024). Soundscape characteristics of RAS tanks holding Atlantic salmon (Salmo salar) during feeding and feed withdrawal. <em>UiT Munin</em>. <a href="https://munin.uit.no/handle/10037/35010" target="_blank">https://munin.uit.no/handle/10037/35010</a></div>
+        
+        <div class="reference">[6] Dempster, T., et al. (2009). Species-specific patterns of aggregation of wild fish around fish farms. <em>Estuarine, Coastal and Shelf Science</em>, 86(2), 271-275. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0272771409005095" target="_blank">https://www.sciencedirect.com/science/article/abs/pii/S0272771409005095</a></div>
+        
+        <div class="reference">[7] Communities for Seas Scotland. (2021). Seal scarer devices may harm harbour porpoise. <em>CCN Scotland</em>. <a href="https://www.communitiesforseas.scot/seal-scarer-devices-may-harm-harbour-porpoise/" target="_blank">https://www.communitiesforseas.scot/seal-scarer-devices-may-harm-harbour-porpoise/</a></div>
+        
+        <div class="reference">[8] SalmonBusiness. (2023). Farmed salmon live in a noisy world—and it's affecting their health. <em>SalmonBusiness News</em>. <a href="https://www.salmonbusiness.com/farmed-salmon-live-in-a-noisy-world-and-its-affecting-their-health/" target="_blank">https://www.salmonbusiness.com/farmed-salmon-live-in-a-noisy-world-and-its-affecting-their-health/</a></div>
+        
+        <div class="reference">[9] Merchant, N.D., et al. (2020). Measuring acoustic habitats. <em>Methods in Ecology and Evolution</em>, 11(4), 479-490.</div>
+        
+        <div class="reference">[10] Nedelec, S.L., et al. (2020). Soundscapes and living resources in coral reefs and coastal marine habitats. <em>ICES Journal of Marine Science</em>, 77(7-8), 2413-2426.</div>
+    </div>
+    
+</body>
+</html>
