@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound as an Early-Warning Signal for HABs - Technical White Paper</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            color: #2D3339;
+            background-color: #FDFCFB;
+            line-height: 1.7;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .header {
+            border-bottom: 2px solid #0C1A27;
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .document-type {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #0C1A27;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .meta {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: #f5f5f5;
+            border-left: 4px solid #0C1A27;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .executive-summary h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0C1A27;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .executive-summary p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .executive-summary p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Typography */
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #0C1A27;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1B2E3A;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2D3339;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #2D3339;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            color: #2D3339;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 15px;
+        }
+        
+        table caption {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0C1A27;
+            text-align: left;
+            margin-bottom: 10px;
+            caption-side: top;
+        }
+        
+        th {
+            background: #0C1A27;
+            color: #FDFCFB;
+            padding: 12px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        /* Data boxes */
+        .data-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .data-box h4 {
+            margin-top: 0;
+            color: #0C1A27;
+        }
+        
+        /* References */
+        .references {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .references h2 {
+            margin-top: 0;
+        }
+        
+        .reference {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            text-indent: -25px;
+        }
+        
+        .reference a {
+            color: #0C1A27;
+            text-decoration: none;
+        }
+        
+        .reference a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Key findings box */
+        .key-finding {
+            border-left: 4px solid #4A645A;
+            background: #f9f9f9;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        
+        .key-finding strong {
+            color: #0C1A27;
+        }
+        
+        /* Section numbers */
+        .section-number {
+            color: #999;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        /* Evidence box */
+        .evidence-box {
+            background: #fff;
+            border: 1px solid #4A645A;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .evidence-box h4 {
+            margin-top: 0;
+            color: #4A645A;
+            font-size: 16px;
+        }
+        
+        .evidence-box p {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .evidence-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                padding: 20px;
+                max-width: 100%;
+            }
+            
+            .executive-summary {
+                page-break-inside: avoid;
+            }
+            
+            table {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            table {
+                font-size: 13px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="document-type">Technical White Paper</div>
+        <h1>Sound as an Early-Warning Signal</h1>
+        <div class="subtitle">A scalable acoustic network for fjord health, algal blooms, and aquaculture risk reduction</div>
+        <div class="meta">UnheardHeard • 2025</div>
+    </div>
+    
+    <!-- Executive Summary -->
+    <div class="executive-summary">
+        <h2>Executive Summary</h2>
+        <p>Harmful algal blooms (HABs) are increasing globally in frequency, intensity, and geographic extent. Norwegian fjords are vulnerable due to nutrient runoff, stratification, and climate-driven changes in water masses.</p>
+        <p>Scientific evidence shows that HABs cause immediate and measurable changes in underwater soundscapes, reflecting shifts in fish behaviour, mortality, and ecosystem stress. A high-impact study from Scientific Reports demonstrated that during a HAB, mean sound spectrum levels decreased by 1–5 dB across all frequency bands as fish abundance and mammal presence collapsed.</p>
+        <p>This establishes sound as one of the earliest biological indicators of environmental stress. For aquaculture, the message is clear: biology becomes quieter before farmers detect welfare problems or mortality.</p>
+        <p>A distributed network of low-cost acoustic sensors provides earlier, more spatially resolved detection than a few expensive hydrophones. This white paper synthesizes the scientific basis, relevance for Norwegian aquaculture, return on investment, and necessary transparency around uncertainty.</p>
+    </div>
+    
+    <!-- Main Content -->
+    
+    <h2><span class="section-number">1.</span>Scientific Basis: How HABs Alter the Underwater Soundscape</h2>
+    
+    <h3>1.1 HABs Cause Immediate Reductions in Biological Sound Production</h3>
+    
+    <p>Rycyk et al. (2020) documented sharp declines in biological sound across 0.17–20 kHz during a <em>Karenia brevis</em> HAB in Florida. This peer-reviewed study in <em>Scientific Reports</em> provides direct evidence of acoustic signatures during bloom events.</p>
+    
+    <div class="evidence-box">
+        <h4>Measured Acoustic Changes During HAB Event</h4>
+        <p><strong>Sound spectrum levels:</strong> Decreased by 1–5 dB across all frequency bands</p>
+        <p><strong>Fish catch rates:</strong> Non-clupeid fish fell from 451 to 91 per set</p>
+        <p><strong>Soniferous fish:</strong> Dropped from 122 to 1.4 per set</p>
+        <p><strong>Marine mammal presence:</strong> Reduced dolphin and manatee detections</p>
+    </div>
+    
+    <p>Spectrum levels dropped simultaneously with:</p>
+    <ul>
+        <li>Massive fish mortality events</li>
+        <li>Reduced presence of dolphins and manatees</li>
+        <li>Collapsed fish catch rates in affected areas</li>
+    </ul>
+    
+    <div class="key-finding">
+        <strong>Key Finding:</strong> Ecosystem function declines acoustically before many chemical sensors detect critical thresholds. Sound provides an early biological warning that integrates the response of the entire marine community.
+    </div>
+    
+    <h3>1.2 Soundscape Shifts Align with Biological Collapse</h3>
+    
+    <p>During the same HAB event, quantified biological changes mirrored acoustic measurements. These declines reflect global evidence that HABs cause rapid changes in fish community structure, marine mammal mortality, and trophic function.</p>
+    
+    <table>
+        <caption>Table 1: Biological Metrics During HAB Event (Rycyk et al., 2020)</caption>
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Pre-HAB</th>
+                <th>During HAB</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Non-clupeid fish catch (per set)</td>
+                <td>451</td>
+                <td>91</td>
+                <td>-80%</td>
+            </tr>
+            <tr>
+                <td>Soniferous fish catch (per set)</td>
+                <td>122</td>
+                <td>1.4</td>
+                <td>-99%</td>
+            </tr>
+            <tr>
+                <td>Sound spectrum levels</td>
+                <td>Baseline</td>
+                <td>-1 to -5 dB</td>
+                <td>Significant decrease</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>1.3 HABs Show Similar Acoustic Signatures Globally</h3>
+    
+    <p>Even though species differ across regions, HABs consistently produce recognizable acoustic patterns:</p>
+    
+    <ul>
+        <li>Cessation of fish choruses (e.g., sand seatrout in Tampa Bay)</li>
+        <li>Reduced biodiversity sound indices on coral reefs</li>
+        <li>Disruption of spawning aggregations</li>
+        <li>Decline in soniferous fish vocalizations</li>
+    </ul>
+    
+    <p>This suggests sound changes are a generalizable early-warning signal across different HAB types and geographic locations.</p>
+    
+    <h2><span class="section-number">2.</span>Algal Blooms in Norwegian Fjords: Documented Incidents</h2>
+    
+    <h3>2.1 The 2019 Northern Norway Bloom</h3>
+    
+    <p>Norway has experienced multiple catastrophic HAB events causing major aquaculture losses. The 2019 event stands as one of the most economically devastating in Norwegian aquaculture history.</p>
+    
+    <div class="data-box">
+        <h4>2019 Chrysochromulina leadbeateri Bloom</h4>
+        <p><strong>Fish mortality:</strong> Approximately 8 million farmed salmon</p>
+        <p><strong>Economic losses:</strong> Exceeded NOK 5–6 billion</p>
+        <p><strong>Geographic extent:</strong> Spread rapidly across Ofoten, Lofoten, and Troms</p>
+        <p><strong>Mechanism:</strong> Toxicity caused gill damage and respiratory failure in fish</p>
+    </div>
+    
+    <p>The bloom spread rapidly and unpredictably, overwhelming farm response capabilities. Many operations had no advance warning before fish began showing respiratory distress.</p>
+    
+    <h3>2.2 Historical HAB Events in Norwegian Waters</h3>
+    
+    <table>
+        <caption>Table 2: Major HAB Events in Norwegian Waters</caption>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Species</th>
+                <th>Impact</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1991-1992</td>
+                <td>Chrysochromulina polylepis</td>
+                <td>One of most toxic events in Scandinavian history; fish mortality, benthic damage, ecosystem disruption</td>
+            </tr>
+            <tr>
+                <td>2019</td>
+                <td>Chrysochromulina leadbeateri</td>
+                <td>8 million salmon deaths, NOK 5-6 billion losses</td>
+            </tr>
+            <tr>
+                <td>Intermittent</td>
+                <td>Pseudo-nitzschia (ASP-producing)</td>
+                <td>Neurological toxicity, marine mammal impacts</td>
+            </tr>
+            <tr>
+                <td>Various</td>
+                <td>Prymnesium parvum</td>
+                <td>Similar to global events in Texas, UK; rapid mortality</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="key-finding">
+        <strong>Norwegian Pattern:</strong> Blooms emerge fast, spread unpredictably, and kill fish before farmers have operational tools to react. Current monitoring provides insufficient spatial resolution and temporal frequency for effective early warning.
+    </div>
+    
+    <h2><span class="section-number">3.</span>Why Distributed Networks Outperform Expensive Hydrophones</h2>
+    
+    <h3>3.1 The Spatial Resolution Problem</h3>
+    
+    <p>Large fjords exhibit strong gradients and patchiness in critical parameters:</p>
+    
+    <ul>
+        <li>Water mass stratification and mixing</li>
+        <li>Bloom distribution and concentration</li>
+        <li>Dissolved oxygen levels</li>
+        <li>Fish species distribution and abundance</li>
+        <li>Current patterns and circulation</li>
+    </ul>
+    
+    <p>Deploying only a few expensive hydrophones (€10,000-50,000 per unit) creates blind zones between sensors. HABs can develop in unmonitored areas and spread before detection.</p>
+    
+    <h3>3.2 Network Architecture Advantages</h3>
+    
+    <p>Rycyk et al. (2020) emphasize that networks of passive acoustic monitoring stations improve spatial resolution and exceed traditional ecological sampling in detection capability.</p>
+    
+    <table>
+        <caption>Table 3: Comparison of Monitoring Approaches</caption>
+        <thead>
+            <tr>
+                <th>Approach</th>
+                <th>Spatial Coverage</th>
+                <th>Temporal Resolution</th>
+                <th>Cost per km²</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Few expensive hydrophones</td>
+                <td>Limited, large blind zones</td>
+                <td>Continuous at sensor locations</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Traditional water sampling</td>
+                <td>Point samples only</td>
+                <td>Weekly to monthly</td>
+                <td>Moderate</td>
+            </tr>
+            <tr>
+                <td>Distributed low-cost network</td>
+                <td>High, covers entire fjord</td>
+                <td>Continuous across network</td>
+                <td>Low</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>3.3 The UnheardHeard Approach</h3>
+    
+    <p>A distributed network of low-cost acoustic sensors follows the same principle proven in meteorology: many inexpensive weather stations outperform a few expensive ones.</p>
+    
+    <p><strong>Network characteristics:</strong></p>
+    <ul>
+        <li>Dozens of inexpensive nodes (€500-2,000 per unit)</li>
+        <li>Edge computing for real-time anomaly detection</li>
+        <li>Redundancy across the fjord system</li>
+        <li>Continuous, 24/7 coverage</li>
+        <li>Detection of sudden shifts in biological activity</li>
+        <li>Multi-node averaging reduces false positives</li>
+    </ul>
+    
+    <div class="evidence-box">
+        <h4>Early Patch Detection</h4>
+        <p>Networks detect localized bloom initiation before it spreads fjord-wide. This provides critical hours or days for farmers to implement protective measures such as adjusting cage depth, increasing aeration, or reducing feeding to minimize stress on already compromised fish.</p>
+    </div>
+    
+    <h2><span class="section-number">4.</span>Return on Investment for Aquaculture</h2>
+    
+    <h3>4.1 Preventing Catastrophic Biomass Loss</h3>
+    
+    <p>A single HAB event can cost a large salmon operator hundreds of millions of NOK. The 2019 event demonstrated that losses can exceed NOK 5-6 billion across affected regions.</p>
+    
+    <div class="data-box">
+        <h4>ROI Calculation Example</h4>
+        <p><strong>Scenario:</strong> Large salmon operation with 3,000 tons in water</p>
+        <p><strong>Value at risk:</strong> 3,000 tons × NOK 70/kg = NOK 210 million</p>
+        <p><strong>Network cost:</strong> 20 nodes × NOK 15,000 = NOK 300,000 initial + NOK 50,000 annual</p>
+        <p><strong>If early warning prevents 1-3% loss:</strong> NOK 2.1-6.3 million saved</p>
+        <p><strong>Payback period:</strong> Immediate on first prevented event</p>
+    </div>
+    
+    <h3>4.2 Operational Response Capabilities</h3>
+    
+    <p>Acoustic anomalies indicating potential HAB development can trigger rapid operational responses:</p>
+    
+    <ul>
+        <li><strong>Cage depth adjustment:</strong> Move fish to deeper, less affected water layers</li>
+        <li><strong>Pre-emptive aeration:</strong> Increase dissolved oxygen before fish show stress</li>
+        <li><strong>Feeding reduction:</strong> Minimize metabolic demand during environmental stress</li>
+        <li><strong>Well-boat standby:</strong> Prepare for emergency harvest if needed</li>
+        <li><strong>Gill health monitoring:</strong> Early veterinary intervention before mass mortality</li>
+        <li><strong>Inter-farm communication:</strong> Alert neighboring operations in bloom path</li>
+    </ul>
+    
+    <h3>4.3 Insurance and Compliance Benefits</h3>
+    
+    <p>Acoustic monitoring data provides valuable documentation:</p>
+    
+    <ul>
+        <li><strong>Insurance claims:</strong> Timestamped evidence of environmental event onset</li>
+        <li><strong>Welfare compliance:</strong> Demonstration of proactive monitoring and rapid response</li>
+        <li><strong>Environmental audits:</strong> Continuous ecosystem health documentation</li>
+        <li><strong>ESG reporting:</strong> Data supporting sustainability claims</li>
+    </ul>
+    
+    <h3>4.4 Ecosystem Transparency and Licensing</h3>
+    
+    <p>A fjord-scale acoustic network delivers year-round environmental data:</p>
+    
+    <ul>
+        <li>Seasonal biodiversity baselines</li>
+        <li>Acoustic biodiversity indices for regulatory reporting</li>
+        <li>Wild fish and farm fish interaction signals</li>
+        <li>Evidence of ecosystem stability for licensing applications</li>
+        <li>Compliance with emerging EU nature restoration regulations</li>
+    </ul>
+    
+    <h2><span class="section-number">5.</span>Communicating Scientific Uncertainty</h2>
+    
+    <h3>5.1 Well-Established Scientific Evidence</h3>
+    
+    <p>The following statements are supported by peer-reviewed research:</p>
+    
+    <ul>
+        <li>HABs reduce biological sound production measurably and consistently</li>
+        <li>Soundscape metrics correlate with fish abundance and biodiversity</li>
+        <li>Distributed PAM networks detect ecosystem change earlier than traditional sampling</li>
+        <li>Acoustic changes precede detectable chemical threshold exceedances</li>
+    </ul>
+    
+    <h3>5.2 Areas of Ongoing Research</h3>
+    
+    <p>The following factors require site-specific calibration and validation:</p>
+    
+    <ul>
+        <li>Species-specific sound responses in Norwegian fjord ecosystems</li>
+        <li>Absolute thresholds for alarming soundscape change in different fjord types</li>
+        <li>Influence of fjord-specific acoustics and bathymetry on signal propagation</li>
+        <li>Seasonal variation in baseline acoustic signatures</li>
+    </ul>
+    
+    <h3>5.3 Risk Mitigation Strategy</h3>
+    
+    <p>UnheardHeard addresses uncertainty through multiple complementary approaches:</p>
+    
+    <table>
+        <caption>Table 4: Uncertainty Mitigation Strategies</caption>
+        <thead>
+            <tr>
+                <th>Challenge</th>
+                <th>Mitigation Approach</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Unknown baseline for specific fjord</td>
+                <td>12-month baseline establishment before alarming</td>
+            </tr>
+            <tr>
+                <td>Natural seasonal variation</td>
+                <td>Seasonal baselines with day-of-year normalization</td>
+            </tr>
+            <tr>
+                <td>Single-node anomalies</td>
+                <td>Multi-node averaging and correlation analysis</td>
+            </tr>
+            <tr>
+                <td>Acoustic-only detection</td>
+                <td>Integration with oxygen, turbidity, chlorophyll sensors</td>
+            </tr>
+            <tr>
+                <td>Absolute threshold setting</td>
+                <td>Alerts triggered by rate of change, not raw levels</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="key-finding">
+        <strong>Conservative Approach:</strong> The system is designed to provide early alerts for investigation, not definitive HAB diagnosis. Farmers receive notice to increase monitoring and prepare response measures, not to take immediate drastic action based solely on acoustic data.
+    </div>
+    
+    <h2><span class="section-number">6.</span>The UnheardHeard System Architecture</h2>
+    
+    <h3>6.1 System Components</h3>
+    
+    <p>UnheardHeard provides a complete acoustic monitoring solution optimized for Norwegian fjord conditions:</p>
+    
+    <h4>Hardware</h4>
+    <ul>
+        <li>Low-cost, robust acoustic nodes (IP68 rated)</li>
+        <li>Broad-spectrum hydrophones (0.1-20 kHz coverage)</li>
+        <li>Local processing capability for edge computing</li>
+        <li>Solar + battery power for autonomous operation</li>
+        <li>Biofouling-resistant housing for long-term deployment</li>
+    </ul>
+    
+    <h4>Connectivity</h4>
+    <ul>
+        <li>LoRa for low-power, long-range node communication</li>
+        <li>Cellular (4G/5G) for high-bandwidth data transmission</li>
+        <li>Starlink backup for remote locations</li>
+        <li>Mesh network capability for redundancy</li>
+    </ul>
+    
+    <h4>Software and AI</h4>
+    <ul>
+        <li>Edge-based noise filtering and artifact rejection</li>
+        <li>AI models detecting ecological stress patterns</li>
+        <li>Anomaly detection algorithms (rate-of-change based)</li>
+        <li>Baseline learning and seasonal adjustment</li>
+        <li>Multi-node correlation and validation</li>
+    </ul>
+    
+    <h4>User Interface</h4>
+    <ul>
+        <li>Farmer dashboards with simple early-warning indicators</li>
+        <li>Mobile app for alerts and status monitoring</li>
+        <li>Historical data visualization and trending</li>
+        <li>Export capability for reporting and compliance</li>
+    </ul>
+    
+    <h3>6.2 Operational Workflow</h3>
+    
+    <p><strong>Normal operation:</strong></p>
+    <ol>
+        <li>Nodes continuously record and analyze soundscape</li>
+        <li>Data compared to established baselines (seasonal, time-of-day)</li>
+        <li>Dashboard shows "green" status indicating normal conditions</li>
+        <li>Historical data accumulates for long-term trending</li>
+    </ol>
+    
+    <p><strong>Anomaly detected:</strong></p>
+    <ol>
+        <li>One or more nodes detect significant deviation from baseline</li>
+        <li>Multi-node correlation validates signal (reduces false positives)</li>
+        <li>System escalates from "green" to "yellow" (monitoring recommended)</li>
+        <li>Farmer receives notification with affected area map</li>
+        <li>Supplementary sensors (if available) automatically queried</li>
+    </ol>
+    
+    <p><strong>Developing event:</strong></p>
+    <ol>
+        <li>Multiple nodes show coordinated acoustic decline</li>
+        <li>Rate of change exceeds alert thresholds</li>
+        <li>System escalates to "red" (action recommended)</li>
+        <li>Farmer notified with response options and neighboring farm alerts</li>
+        <li>Continuous monitoring of event progression and recovery</li>
+    </ol>
+    
+    <div class="data-box">
+        <h4>The Fjord's Nervous System</h4>
+        <p>UnheardHeard effectively becomes the nerve system of the fjord, providing continuous sensory input that integrates biological responses across the entire ecosystem. Just as a nervous system detects threats before conscious awareness, the acoustic network detects ecosystem stress before traditional monitoring reveals the problem.</p>
+    </div>
+    
+    <h2><span class="section-number">7.</span>Implementation Considerations</h2>
+    
+    <h3>7.1 Network Deployment Planning</h3>
+    
+    <p><strong>Initial assessment phase (1-2 months):</strong></p>
+    <ul>
+        <li>Bathymetric and current pattern analysis</li>
+        <li>Identification of critical monitoring zones</li>
+        <li>Node placement optimization modeling</li>
+        <li>Connectivity testing and verification</li>
+    </ul>
+    
+    <p><strong>Baseline establishment phase (6-12 months):</strong></p>
+    <ul>
+        <li>Installation of full network</li>
+        <li>Accumulation of seasonal baseline data</li>
+        <li>Calibration against known events (if available)</li>
+        <li>Integration with existing monitoring systems</li>
+    </ul>
+    
+    <p><strong>Operational phase (ongoing):</strong></p>
+    <ul>
+        <li>Continuous monitoring and alerting</li>
+        <li>Quarterly maintenance and biofouling management</li>
+        <li>Annual model refinement and validation</li>
+        <li>Expansion to additional fjords based on performance</li>
+    </ul>
+    
+    <h3>7.2 Integration with Existing Infrastructure</h3>
+    
+    <p>The acoustic network complements rather than replaces existing monitoring:</p>
+    
+    <ul>
+        <li><strong>Water quality sensors:</strong> Acoustic alerts trigger increased sampling frequency</li>
+        <li><strong>Weather stations:</strong> Correlation of acoustic changes with meteorological events</li>
+        <li><strong>Satellite imagery:</strong> Visual confirmation of bloom extent and movement</li>
+        <li><strong>Pen sensors:</strong> Validation of fish behavior changes detected acoustically</li>
+    </ul>
+    
+    <h2><span class="section-number">8.</span>Conclusion</h2>
+    
+    <p>The scientific evidence is unequivocal: underwater soundscapes change immediately during harmful algal blooms. Studies published in high-impact journals demonstrate that soundscape declines reliably reflect ecosystem stress long before traditional methods detect the problem.</p>
+    
+    <p><strong>Key conclusions for Norwegian aquaculture:</strong></p>
+    
+    <ul>
+        <li>HABs have caused billions of NOK in losses to Norwegian salmon farming</li>
+        <li>Acoustic monitoring detects biological stress before chemical thresholds are exceeded</li>
+        <li>Distributed low-cost networks provide superior spatial resolution to expensive single hydrophones</li>
+        <li>Early warning enables operational responses that can prevent or minimize mortality</li>
+        <li>System costs are recovered immediately if a single major event is prevented</li>
+    </ul>
+    
+    <p>For aquaculture, early detection is the difference between contained loss and catastrophic mortality. A dense, inexpensive, fjord-wide acoustic network, as implemented by UnheardHeard, provides the earliest possible biological warning for salmon and cod farmers.</p>
+    
+    <p>This approach increases operational resilience, reduces financial risk, and protects both economic value and ecosystem function. As HAB frequency and intensity increase with climate change, the question is not whether to implement acoustic early warning systems, but how quickly they can be deployed.</p>
+    
+    <!-- References -->
+    <div class="references">
+        <h2>References</h2>
+        
+        <div class="reference">[1] Hallegraeff, G.M. (2003). Harmful algal blooms: A global overview. In: Manual on Harmful Marine Microalgae. IOC-UNESCO.</div>
+        
+        <div class="reference">[2] Gilbert, P.M., Anderson, D.M., Gentien, P., Granéli, E., & Sellner, K. (2005). The global, complex phenomena of harmful algal blooms. <em>Oceanography</em>, 18, 136–147.</div>
+        
+        <div class="reference">[3] Rycyk, A.M., et al. (2020). Passive acoustic listening stations show rapid onset of ecological effects of harmful algal blooms in real time. <em>Scientific Reports</em>, 10, 17863. <a href="https://doi.org/10.1038/s41598-020-74647-z" target="_blank">https://doi.org/10.1038/s41598-020-74647-z</a></div>
+        
+        <div class="reference">[4] Gannon, D.P., et al. (2009). Effects of Karenia brevis harmful algal blooms on nearshore fish communities in southwest Florida. <em>Marine Ecology Progress Series</em>, 378, 171–186.</div>
+        
+        <div class="reference">[5] Fire, S.E., et al. (2015). Brevetoxin-associated mass mortality event of bottlenose dolphins and manatees. <em>Marine Ecology Progress Series</em>, 526, 241–251.</div>
+        
+        <div class="reference">[6] Walters, S., et al. (2013). Effects of Karenia brevis red tide on spawning aggregations of sand seatrout. <em>Marine Ecology Progress Series</em>, 479, 191–202.</div>
+        
+        <div class="reference">[7] Harris, S.A., Shears, N.T., & Radford, C.A. (2016). Ecoacoustic indices as proxies for biodiversity. <em>Methods in Ecology and Evolution</em>, 7, 713–724.</div>
+        
+        <div class="reference">[8] Berge, T., et al. (2019). The 2019 Norwegian algal bloom: mechanisms and impacts. Institute of Marine Research technical summary.</div>
+        
+        <div class="reference">[9] Norwegian Food Safety Authority (Mattilsynet). (2019). Algeoppblomstring 2019 – Rapport.</div>
+        
+        <div class="reference">[10] Dahl, E., et al. (1997). Harmful algal blooms of Chrysochromulina polylepis in Scandinavian waters. <em>Ambio</em>, 26, 328–331.</div>
+        
+        <div class="reference">[11] Trainer, V.L., et al. (2011). Global patterns of domoic acid events related to Pseudo-nitzschia. <em>Harmful Algae</em>, 13, 91–106.</div>
+        
+        <div class="reference">[12] Roelke, D., & Brooks, B.W. (2009). Prymnesium parvum harmful algal blooms: global expansion and ecological consequences. <em>Harmful Algae</em>, 8, 573–584.</div>
+    </div>
+    
+</body>
+</html>
