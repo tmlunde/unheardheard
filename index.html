@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnheardHeard - Listening to Life Beneath the Surface</title>
+    <title>Phoniq - Listening to Life Beneath the Surface</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -14,7 +14,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -23,30 +23,77 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --deep: #082E22;
+            --deep-light: #0C3A2C;
+            --signal: #B4D9C7;
+            --signal-muted: rgba(180, 217, 199, 0.7);
+            --signal-faint: rgba(180, 217, 199, 0.15);
+            --pulse: #E63926;
+            --white: #F0F5F2;
+        }
+        
         html {
             scroll-behavior: smooth;
         }
         
         body {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 400;
-            color: #CBD3D6;
-            background-color: #0C1A27;
+            color: var(--signal);
+            background-color: var(--deep);
             overflow-x: hidden;
         }
         
-        /* Hero Section with iframe */
+        /* Hero Section */
         .hero-section {
             width: 100%;
             height: 100vh;
             position: relative;
             overflow: hidden;
+            background: var(--deep);
         }
         
-        .hero-iframe {
+        .hero-video {
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(8, 46, 34, 0.25) 0%,
+                rgba(8, 46, 34, 0.1) 40%,
+                rgba(8, 46, 34, 0.3) 80%,
+                rgba(8, 46, 34, 0.7) 100%
+            );
+            z-index: 2;
+        }
+        
+        .hero-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: clamp(220px, 30vw, 420px);
+            height: auto;
+            pointer-events: none;
+        }
+        
+        .hero-logo img {
+            width: 100%;
+            height: auto;
             display: block;
         }
         
@@ -55,19 +102,22 @@
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 14px;
-            color: #CBD3D6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--signal-muted);
             text-align: center;
-            animation: bounce 2s infinite;
+            animation: bounce 2.5s ease-in-out infinite;
             z-index: 10;
             cursor: pointer;
-            font-weight: 400;
         }
         
         .scroll-indicator svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             margin-top: 8px;
+            opacity: 0.7;
         }
         
         @keyframes bounce {
@@ -75,22 +125,22 @@
                 transform: translateX(-50%) translateY(0);
             }
             40% {
-                transform: translateX(-50%) translateY(-10px);
+                transform: translateX(-50%) translateY(-8px);
             }
             60% {
-                transform: translateX(-50%) translateY(-5px);
+                transform: translateX(-50%) translateY(-4px);
             }
         }
         
         /* Spacer Section */
         .spacer-section {
-            background: #0C1A27;
-            height: 60vh;
+            background: var(--deep);
+            height: 50vh;
         }
         
         /* Main Content Section */
         .content-section {
-            background: #0C1A27;
+            background: var(--deep);
             padding: 0;
             display: flex;
             align-items: stretch;
@@ -115,7 +165,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(12, 26, 39, 0.4);
+            background: rgba(8, 46, 34, 0.45);
         }
         
         .content-left-text {
@@ -124,16 +174,17 @@
         }
         
         .content-left h1 {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: clamp(48px, 6vw, 72px);
-            color: #CBD3D6;
+            font-family: 'Spectral', serif;
+            font-weight: 300;
+            font-size: clamp(44px, 5.5vw, 72px);
+            color: var(--signal);
             line-height: 1.2;
+            letter-spacing: -0.02em;
         }
         
         .content-right {
             flex: 1;
-            background: #0C1A27;
+            background: var(--deep);
             padding: 80px 100px;
             display: flex;
             flex-direction: column;
@@ -141,21 +192,22 @@
         }
         
         .content-right h2 {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: clamp(36px, 4vw, 48px);
-            color: #CBD3D6;
-            line-height: 1.3;
-            margin-bottom: 50px;
+            font-family: 'Spectral', serif;
+            font-weight: 400;
+            font-size: clamp(32px, 3.5vw, 44px);
+            color: var(--signal);
+            line-height: 1.35;
+            margin-bottom: 48px;
+            letter-spacing: -0.01em;
         }
         
         .content-right p {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: clamp(17px, 1.8vw, 19px);
-            line-height: 1.8;
-            color: rgba(203, 211, 214, 0.95);
-            margin-bottom: 25px;
+            font-size: clamp(16px, 1.6vw, 18px);
+            line-height: 1.85;
+            color: var(--signal-muted);
+            margin-bottom: 22px;
         }
         
         .content-right p:last-of-type {
@@ -163,17 +215,30 @@
         }
         
         .tagline {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 500;
             font-size: 18px;
             font-style: italic;
-            margin-top: 40px;
-            color: #E0C488;
+            margin-top: 36px;
+            color: var(--signal);
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .tagline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--pulse);
         }
         
         /* Statistics Section */
         .stats-section {
-            background: #1B2E3A;
+            background: var(--deep-light);
             padding: 100px 100px;
         }
         
@@ -184,88 +249,121 @@
         }
         
         .stats-header h2 {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: clamp(36px, 4vw, 48px);
-            color: #CBD3D6;
-            margin-bottom: 20px;
+            font-family: 'Spectral', serif;
+            font-weight: 400;
+            font-size: clamp(32px, 3.5vw, 44px);
+            color: var(--signal);
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
         }
         
         .stats-header p {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: clamp(17px, 1.8vw, 19px);
-            line-height: 1.7;
-            color: rgba(203, 211, 214, 0.9);
+            font-size: clamp(16px, 1.6vw, 18px);
+            line-height: 1.75;
+            color: var(--signal-muted);
         }
         
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            gap: 36px;
             max-width: 1400px;
             margin: 0 auto;
         }
         
         .stat-card {
-            background: rgba(12, 26, 39, 0.6);
-            padding: 40px 30px;
-            border-radius: 8px;
-            border-left: 4px solid #E0C488;
+            background: rgba(8, 46, 34, 0.5);
+            padding: 40px 32px;
+            border-radius: 4px;
+            border-left: 3px solid var(--signal);
+            transition: border-color 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            border-left-color: var(--pulse);
         }
         
         .stat-number {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: clamp(42px, 5vw, 56px);
-            color: #E0C488;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: clamp(38px, 4.5vw, 52px);
+            color: var(--signal);
             line-height: 1;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
         
         .stat-label {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: clamp(15px, 1.5vw, 17px);
-            line-height: 1.6;
-            color: rgba(203, 211, 214, 0.95);
+            font-size: clamp(14px, 1.4vw, 16px);
+            line-height: 1.7;
+            color: var(--signal-muted);
         }
         
         .stat-source {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 400;
-            font-size: 13px;
+            font-size: 12px;
             line-height: 1.5;
-            color: rgba(203, 211, 214, 0.6);
-            margin-top: 15px;
+            color: rgba(180, 217, 199, 0.4);
+            margin-top: 14px;
             font-style: italic;
         }
         
         /* Team Section */
         .team-section {
-            background: #0C1A27;
+            background: var(--deep);
             padding: 120px 100px;
-            text-align: center;
+        }
+        
+        .team-inner {
+            max-width: 960px;
+            margin: 0 auto;
         }
         
         .team-section h2 {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: clamp(36px, 4vw, 48px);
-            color: #CBD3D6;
+            font-family: 'Spectral', serif;
+            font-weight: 400;
+            font-size: clamp(32px, 3.5vw, 44px);
+            color: var(--signal);
+            margin-bottom: 40px;
+            letter-spacing: -0.01em;
+        }
+        
+        .team-section .team-intro {
+            font-family: 'Spectral', serif;
+            font-weight: 400;
+            font-size: clamp(18px, 2vw, 20px);
+            line-height: 1.75;
+            color: var(--signal);
             margin-bottom: 40px;
         }
         
-        .team-section p {
-            font-family: 'Fira Sans', sans-serif;
+        .team-section .team-bio {
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: clamp(18px, 2vw, 20px);
-            line-height: 1.7;
-            color: #CBD3D6;
-            max-width: 900px;
-            margin: 0 auto 30px;
+            font-size: clamp(15px, 1.5vw, 17px);
+            line-height: 1.85;
+            color: var(--signal-muted);
+            margin-bottom: 20px;
         }
         
+        .team-section .team-bio strong {
+            color: var(--signal);
+            font-weight: 600;
+        }
+        
+        .team-names {
+            font-family: 'Spectral', serif;
+            font-weight: 500;
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--signal);
+            margin-bottom: 28px;
+            letter-spacing: -0.01em;
+        }
+
         /* Use Cases Section */
         .use-cases-section {
             background-image: url('assets/landscape-background.png');
@@ -283,7 +381,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(12, 26, 39, 0.3) 0%, rgba(12, 26, 39, 0.5) 40%, rgba(12, 26, 39, 0.7) 100%);
+            background: linear-gradient(to bottom, rgba(8, 46, 34, 0.4) 0%, rgba(8, 46, 34, 0.6) 40%, rgba(8, 46, 34, 0.8) 100%);
             z-index: 1;
         }
         
@@ -300,20 +398,21 @@
         }
         
         .use-cases-intro h2 {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: clamp(36px, 4vw, 48px);
-            color: #CBD3D6;
-            margin-bottom: 30px;
-            line-height: 1.3;
+            font-family: 'Spectral', serif;
+            font-weight: 400;
+            font-size: clamp(32px, 3.5vw, 44px);
+            color: var(--signal);
+            margin-bottom: 28px;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
         }
         
         .use-cases-intro .intro-text {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: clamp(18px, 2vw, 20px);
-            line-height: 1.7;
-            color: #CBD3D6;
+            font-size: clamp(17px, 1.8vw, 19px);
+            line-height: 1.75;
+            color: var(--signal);
             max-width: 900px;
             margin: 0 auto;
         }
@@ -327,7 +426,7 @@
         .use-cases-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 50px;
+            gap: 44px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -343,89 +442,98 @@
         }
         
         .use-case {
-            border-left: 2px solid #4A645A;
-            padding-left: 30px;
-            background: rgba(27, 46, 58, 0.85);
-            padding: 30px;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
+            border-left: 2px solid rgba(180, 217, 199, 0.3);
+            padding: 32px;
+            background: rgba(8, 46, 34, 0.85);
+            border-radius: 4px;
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s ease;
+        }
+        
+        .use-case:hover {
+            border-left-color: var(--signal);
         }
         
         .use-case.primary {
-            border-left: 4px solid #E0C488;
-            background: rgba(27, 46, 58, 0.9);
+            border-left: 3px solid var(--signal);
+            background: rgba(8, 46, 34, 0.9);
+        }
+        
+        .use-case.primary:hover {
+            border-left-color: var(--pulse);
         }
         
         .use-case h3 {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: clamp(22px, 2vw, 28px);
-            color: #CBD3D6;
-            margin-bottom: 15px;
+            font-family: 'Spectral', serif;
+            font-weight: 500;
+            font-size: clamp(20px, 2vw, 26px);
+            color: var(--signal);
+            margin-bottom: 14px;
         }
         
         .use-case.primary h3 {
-            font-size: clamp(24px, 2.5vw, 32px);
+            font-size: clamp(22px, 2.5vw, 30px);
         }
         
         .use-case .who {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            color: #E0C488;
-            margin-bottom: 15px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--signal-muted);
+            margin-bottom: 14px;
             text-transform: uppercase;
-            letter-spacing: 0.75px;
+            letter-spacing: 1.5px;
         }
         
         .use-case .what {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: clamp(16px, 1.5vw, 18px);
-            line-height: 1.7;
-            color: #CBD3D6;
-            margin-bottom: 15px;
+            font-size: clamp(15px, 1.4vw, 17px);
+            line-height: 1.75;
+            color: var(--signal);
+            margin-bottom: 14px;
         }
         
         .use-case .why {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: clamp(16px, 1.5vw, 18px);
-            line-height: 1.7;
-            color: rgba(203, 211, 214, 0.85);
+            font-size: clamp(15px, 1.4vw, 17px);
+            line-height: 1.75;
+            color: var(--signal-muted);
         }
         
         .use-case .why strong {
             font-weight: 500;
-            color: #CBD3D6;
+            color: var(--signal);
         }
         
         /* Whitepaper Section */
         .whitepaper-section {
-            background: #0C1A27;
+            background: var(--deep);
             padding: 120px 100px;
             position: relative;
         }
         
         .whitepaper-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 72px;
         }
         
         .whitepaper-header h2 {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: clamp(36px, 4vw, 48px);
-            color: #CBD3D6;
+            font-family: 'Spectral', serif;
+            font-weight: 400;
+            font-size: clamp(32px, 3.5vw, 44px);
+            color: var(--signal);
             margin-bottom: 20px;
+            letter-spacing: -0.01em;
         }
         
         .whitepaper-header p {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: clamp(18px, 2vw, 20px);
-            line-height: 1.7;
-            color: rgba(203, 211, 214, 0.85);
+            font-size: clamp(16px, 1.6vw, 18px);
+            line-height: 1.75;
+            color: var(--signal-muted);
             max-width: 800px;
             margin: 0 auto;
         }
@@ -433,16 +541,16 @@
         .whitepaper-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 28px;
             margin-bottom: 60px;
         }
         
         .whitepaper-card {
-            background: linear-gradient(135deg, #1B2E3A 0%, #0C1A27 100%);
-            border: 1px solid rgba(203, 211, 214, 0.1);
-            border-radius: 12px;
+            background: var(--deep-light);
+            border: 1px solid rgba(180, 217, 199, 0.08);
+            border-radius: 4px;
             padding: 40px;
-            transition: all 0.3s ease;
+            transition: all 0.35s ease;
             cursor: pointer;
             text-decoration: none;
             display: block;
@@ -455,15 +563,15 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
+            width: 3px;
             height: 0;
-            background: #E0C488;
-            transition: height 0.3s ease;
+            background: var(--pulse);
+            transition: height 0.35s ease;
         }
         
         .whitepaper-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(224, 196, 136, 0.3);
+            transform: translateY(-4px);
+            border-color: rgba(180, 217, 199, 0.2);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
         
@@ -472,30 +580,30 @@
         }
         
         .whitepaper-label {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 500;
-            font-size: 12px;
-            color: #E0C488;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            color: var(--signal-muted);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
         }
         
         .whitepaper-title {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: 22px;
+            font-family: 'Spectral', serif;
+            font-weight: 500;
+            font-size: 20px;
             line-height: 1.4;
-            color: #CBD3D6;
-            margin-bottom: 15px;
+            color: var(--signal);
+            margin-bottom: 14px;
         }
         
         .whitepaper-description {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.7;
-            color: rgba(203, 211, 214, 0.75);
+            color: var(--signal-muted);
             margin-bottom: 20px;
         }
         
@@ -503,14 +611,15 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            font-size: 14px;
-            color: rgba(203, 211, 214, 0.6);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            color: rgba(180, 217, 199, 0.4);
         }
         
         .whitepaper-meta svg {
             width: 16px;
             height: 16px;
-            opacity: 0.6;
+            opacity: 0.5;
         }
         
         .whitepaper-arrow {
@@ -518,12 +627,14 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 14px;
-            color: #E0C488;
-            font-weight: 500;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--signal);
+            letter-spacing: 0.5px;
             opacity: 0;
             transform: translateX(-10px);
-            transition: all 0.3s ease;
+            transition: all 0.35s ease;
         }
         
         .whitepaper-card:hover .whitepaper-arrow {
@@ -532,74 +643,90 @@
         }
         
         .whitepaper-arrow svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
         }
         
         /* CTA Section */
         .cta-section {
-            background: #0C1A27;
+            background: var(--deep);
             padding: 120px 100px;
             text-align: center;
+            position: relative;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--signal-muted), transparent);
         }
         
         .cta-section h2 {
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 600;
-            font-size: clamp(36px, 4vw, 48px);
-            color: #CBD3D6;
-            margin-bottom: 40px;
+            font-family: 'Spectral', serif;
+            font-weight: 400;
+            font-size: clamp(32px, 3.5vw, 44px);
+            color: var(--signal);
+            margin-bottom: 36px;
+            letter-spacing: -0.01em;
         }
         
         .cta-section p {
-            font-family: 'Fira Sans', sans-serif;
+            font-family: 'Spectral', serif;
             font-weight: 400;
-            font-size: clamp(18px, 2vw, 20px);
-            line-height: 1.7;
-            color: #CBD3D6;
-            max-width: 900px;
-            margin: 0 auto 50px;
+            font-size: clamp(17px, 1.8vw, 19px);
+            line-height: 1.75;
+            color: var(--signal-muted);
+            max-width: 800px;
+            margin: 0 auto 48px;
         }
         
         .cta-button {
             display: inline-block;
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: 500;
-            font-size: 18px;
-            color: #0C1A27;
-            background: #E0C488;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--deep);
+            background: var(--signal);
             text-decoration: none;
-            padding: 18px 48px;
+            padding: 16px 44px;
             border: none;
-            border-radius: 8px;
+            border-radius: 2px;
             transition: all 0.3s ease;
         }
         
         .cta-button:hover {
-            background: #d4b675;
+            background: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(224, 196, 136, 0.3);
+            box-shadow: 0 12px 36px rgba(180, 217, 199, 0.2);
         }
         
         /* Footer */
         .footer {
-            background: #1B2E3A;
-            padding: 40px 100px;
+            background: var(--deep-light);
+            padding: 36px 100px;
             text-align: center;
-            color: rgba(203, 211, 214, 0.7);
-            font-family: 'Fira Sans', sans-serif;
+            color: rgba(180, 217, 199, 0.45);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 13px;
+            letter-spacing: 0.3px;
         }
         
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 1024px) {
             .content-section {
                 flex-direction: column;
             }
             
             .content-left {
-                min-height: 60vh;
+                min-height: 55vh;
             }
             
             .content-right {
@@ -614,7 +741,7 @@
             }
             
             .whitepaper-grid {
-                gap: 25px;
+                gap: 22px;
             }
             
             .use-cases-intro {
@@ -626,83 +753,89 @@
             }
             
             .use-cases-grid {
-                gap: 40px;
+                gap: 36px;
             }
             
             .footer {
-                padding: 40px 50px;
+                padding: 36px 50px;
             }
         }
         
         @media (max-width: 640px) {
+            .hero-logo {
+                width: clamp(160px, 60vw, 280px);
+            }
+            
             .content-left {
-                padding: 40px 30px;
-                min-height: 50vh;
+                padding: 40px 28px;
+                min-height: 45vh;
             }
             
             .content-right {
-                padding: 40px 30px;
-            }
-            
-            .content-right p {
-                font-size: 16px;
+                padding: 40px 28px;
             }
             
             .team-section,
             .stats-section,
             .cta-section,
             .whitepaper-section {
-                padding: 60px 30px;
+                padding: 60px 28px;
             }
             
             .whitepaper-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 18px;
             }
             
             .whitepaper-card {
-                padding: 30px;
+                padding: 28px;
             }
             
             .use-cases-intro {
-                padding: 60px 30px;
+                padding: 60px 28px;
                 min-height: 300px;
             }
             
             .use-cases-content {
-                padding: 0 30px 60px;
+                padding: 0 28px 60px;
             }
             
             .use-cases-grid {
-                gap: 30px;
+                gap: 24px;
             }
             
             .use-case {
-                padding-left: 20px;
+                padding: 24px;
             }
             
             .use-case.primary {
-                padding: 20px;
+                padding: 24px;
             }
             
             .footer {
-                padding: 30px 20px;
+                padding: 28px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section with iframe -->
+    <!-- Hero Section with Video -->
     <section class="hero-section">
-        <iframe 
-            class="hero-iframe" 
-            src="https://cables.gl/view/JdRYK1" 
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
+        <video 
+            class="hero-video" 
+            src="assets/video.mp4" 
+            autoplay 
+            muted 
+            loop 
+            playsinline>
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-logo">
+            <img src="assets/phonic_logo_nobg.svg" alt="Phoniq - Bioacoustic Intelligence">
+        </div>
         <div class="scroll-indicator" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
             <div>Scroll to explore</div>
-            <svg fill="#CBD3D6" viewBox="0 0 24 24">
+            <svg fill="currentColor" viewBox="0 0 24 24">
                 <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
             </svg>
         </div>
@@ -721,7 +854,7 @@
         </div>
         <div class="content-right">
             <h2>Building the communication layer between us and the living world.</h2>
-            <p>UnheardHeard is creating a new data layer for the planet. One that lets technology listen, learn, and respond to life itself.</p>
+            <p>Phoniq is creating a new data layer for the planet. One that lets technology listen, learn, and respond to life itself.</p>
             <p>Our AI platform transforms natural signals into insight, connecting biology, ecology, and industry through a shared language of data.</p>
             <p>From oceans to farmland, we translate movement, sound, and environmental patterns into understanding, helping humans make decisions that strengthen, rather than silence, the living world.</p>
             <p class="tagline">Because intelligence begins with listening.</p>
@@ -739,34 +872,37 @@
             <div class="stat-card">
                 <div class="stat-number">50×</div>
                 <div class="stat-label">Increase in acoustic events when salmon are stressed. Enabling early detection before visible symptoms appear</div>
-                <div class="stat-source"></div>
             </div>
-            
             
             <div class="stat-card">
                 <div class="stat-number">24/7</div>
                 <div class="stat-label">Continuous monitoring in turbid water where cameras fail. Acoustic sensors work in zero visibility conditions</div>
-                <div class="stat-source"></div>
             </div>
             
             <div class="stat-card">
                 <div class="stat-number">Essential</div>
                 <div class="stat-label">Ocean Sound officially recognized as an Essential Ocean Variable by UN. Soundscapes are now treated as core indicators of ecosystem health</div>
-                <div class="stat-source"></div>
             </div>
             
             <div class="stat-card">
                 <div class="stat-number">Fish speak</div>
                 <div class="stat-label">Cod and other species produce distinctive "grunt" calls indicating stress, aggression, or "conversations". Passive acoustics with AI can be used as an indicator of wellbeing</div>
-                <div class="stat-source"></div>
             </div>
         </div>
     </section>
     
     <!-- Team/Vision Section -->
     <section class="team-section">
-        <h2>Team</h2>
-        <p>Built by scientists, engineers, and storytellers who believe that technology should listen before it acts.</p>
+        <div class="team-inner">
+            <h2>Team</h2>
+            <p class="team-intro">Built by scientists, engineers, and storytellers who believe that technology should listen before it acts.</p>
+            
+            <p class="team-names">Skage Grønneberg & Torleif Markussen Lunde</p>
+            
+            <p class="team-bio"><strong>Skage</strong> brings strong commercial expertise. He holds a degree in economics, spent several years at Handelsbanken Capital Markets, and has run his own real estate company since 2010. He also studied natural resource management at NMBU in Ås and served as head of the business division at Bellona. Together, they cover the technical, commercial, and strategic execution needed to build Phoniq.</p>
+            
+            <p class="team-bio"><strong>Torleif</strong>, former CPO at StormGeo, holds a PhD and brings broad experience across technology, artificial intelligence, product development, innovation management, and building and scaling startups internationally.</p>
+        </div>
     </section>
 
     <!-- Use Cases Section -->
@@ -810,7 +946,6 @@
         </div>
         
         <div class="whitepaper-grid" id="whitepaper-grid">
-            <!-- Whitepaper cards will be dynamically inserted here -->
         </div>
     </section>
     
@@ -818,16 +953,15 @@
     <section class="cta-section">
         <h2>Partner With Us</h2>
         <p>We're partnering with early customers in ocean and land-based industries. If you want to help build the communication layer for nature, reach out.</p>
-        <a href="mailto:hello@unheardheard.com" class="cta-button">Get In Touch</a>
+        <a href="mailto:hello@phoniq.no" class="cta-button">Get In Touch</a>
     </section>
     
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 UnheardHeard. Intelligence begins with listening.</p>
+        <p>&copy; 2025 Phoniq. Intelligence begins with listening.</p>
     </footer>
     
     <script>
-        // Whitepaper data - update this array when adding new whitepapers
         const whitepapers = [
             {
                 title: "Ecosystem Health & Aquaculture Performance",
@@ -857,7 +991,6 @@
                 icon: "salmon",
                 url: "Whitepapers/whitepaper-salmon-acoustics.html"
             },
-            
             {
                 title: "Sound as an Early-Warning Signal",
                 description: "A scalable acoustic network for fjord health, algal blooms, and aquaculture risk reduction.",
@@ -865,10 +998,8 @@
                 icon: "salmon",
                 url: "Whitepapers/whitepaper-hab-early-warning.html"
             }
-            
         ];
         
-        // Function to create whitepaper cards
         function createWhitepaperCard(paper) {
             const card = document.createElement('a');
             card.href = paper.url;
@@ -889,7 +1020,6 @@
             return card;
         }
         
-        // Load whitepapers
         function loadWhitepapers() {
             const grid = document.getElementById('whitepaper-grid');
             whitepapers.forEach(paper => {
@@ -898,7 +1028,6 @@
             });
         }
         
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', loadWhitepapers);
     </script>
 </body>
