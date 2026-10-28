@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personvern – Phoniq</title>
+<meta name="description" content="Personvernerklæring for Lusedagbok-appen fra Phoniq AS.">
+<style>
+  :root {
+    --deep: #082e22;
+    --signal: #b4d9c7;
+    --bg: #fbfaf6;
+    --ink: #082e22;
+    --soft: #4d6b5b;
+    --line: #dfe7e1;
+    --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #04150f; --ink: #eef5f0; --soft: #93ab9f; --line: #1d3a2f; --card: #082e22; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  header { background: var(--deep); color: #fbfaf6; padding: 20px 16px; }
+  header a { color: var(--signal); text-decoration: none; font-weight: 700; letter-spacing: .02em; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 4px; }
+  h2 { font-size: 1.2rem; margin: 36px 0 8px; }
+  .updated { color: var(--soft); margin: 0 0 24px; }
+  a { color: inherit; }
+  .table { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  th { color: var(--soft); font-weight: 600; }
+  ul { padding-left: 1.2em; }
+  li { margin: 6px 0; }
+  footer { color: var(--soft); font-size: .9rem; border-top: 1px solid var(--line); margin-top: 48px; padding-top: 16px; }
+</style>
+</head>
+<body>
+<header><a href="/">phoniq</a></header>
+<main>
+<h1>Personvernerklæring for Lusedagbok</h1>
+<p class="updated">Sist oppdatert 28. oktober 2026</p>
+
+<p>Lusedagbok er en app fra Phoniq AS for å føre lusetellinger i oppdrettsanlegg. Du tar bilde av tellearket i den trykte Lusedagboka, og appen sender tellingen til anlegget i Phoniq.</p>
+
+<h2>Hvem som er ansvarlig</h2>
+<ul>
+  <li><strong>For tellingene og bildene av tellearkene</strong> er selskapet som eier anlegget, behandlingsansvarlig. Phoniq AS er databehandler på vegne av selskapet.</li>
+  <li><strong>For selve appen og koblingen av telefonen</strong> er Phoniq AS behandlingsansvarlig.</li>
+</ul>
+<p>Phoniq AS, org.nr. 937 389 086, Hunstadsvingen 11C, 5053 Bergen. E-post: <a href="mailto:post@phoniq.no">post@phoniq.no</a>.</p>
+
+<h2>Hva appen samler inn, og hvorfor</h2>
+<div class="table"><table>
+  <tr><th>Hva</th><th>Hvorfor</th><th>Når</th></tr>
+  <tr><td><strong>Bilde av tellearket</strong></td><td>Leser tallene fra arket, så de ikke må tastes inn</td><td>Når du tar bilde</td></tr>
+  <tr><td><strong>Det som står på arket:</strong> dato, sjøtemperatur, navnet i «Utført av», lusetall per fisk og merd</td><td>Det er selve lusetellingen</td><td>Når du tar bilde</td></tr>
+  <tr><td><strong>Telefonens posisjon</strong> (presis)</td><td>Velger riktig lokalitet automatisk</td><td>Med hvert bilde, bare når appen er i bruk og du har gitt tillatelse</td></tr>
+  <tr><td><strong>Navnet på telefonen</strong> (f.eks. «Karis iPhone»)</td><td>Lederen ser hvilken telefon som er koblet til, og godkjenner den</td><td>Når telefonen kobles til</td></tr>
+  <tr><td><strong>En tilfeldig nøkkel for telefonen</strong></td><td>Holder telefonen innlogget i selskapet uten passord</td><td>Lagres kryptert på telefonen</td></tr>
+</table></div>
+<p>Appen har <strong>ingen</strong> reklame, sporing eller analyseverktøy fra tredjeparter, og den samler ikke inn kontakter, e-post eller lyd. Posisjonen brukes bare mens appen er åpen, aldri i bakgrunnen.</p>
+
+<h2>Hvem som får dataene</h2>
+<p>Phoniq selger ikke data og deler dem ikke med andre enn disse, som behandler data på vegne av Phoniq:</p>
+<ul>
+  <li><strong>Hetzner Online GmbH</strong>, Tyskland: servere og lagring av bilder og tellinger.</li>
+  <li><strong>Anthropic PBC</strong>, USA: leser tallene fra bildet av tellearket. Bildet sendes for å bli lest og brukes ikke til å trene modeller.</li>
+  <li><strong>Resend, Inc.</strong>, USA: sender tellingen som Excel-fil på e-post til mottakerne selskapet har lagt inn.</li>
+  <li><strong>Expo (650 Industries, Inc.)</strong>, USA: leverer oppdateringer av appen. Ser telefonens IP-adresse og plattform når appen ser etter oppdateringer.</li>
+</ul>
+<p>Overføring til USA skjer på grunnlag av EUs standardkontraktsklausuler i databehandleravtalene med disse leverandørene. Lusetall rapporteres til myndighetene av selskapet selv, ikke av appen.</p>
+
+<h2>Hvor lenge</h2>
+<p>Tellinger og bilder av tellearkene lagres så lenge selskapet har avtale med Phoniq, slik at tellingene kan dokumenteres i ettertid. Når avtalen avsluttes, slettes de, med mindre selskapet ber om å få dem utlevert. Når en telefon kobles fra, slutter nøkkelen å virke.</p>
+
+<h2>Dine rettigheter</h2>
+<p>Du kan be om innsyn i, retting av eller sletting av opplysninger om deg. Skriv til <a href="mailto:post@phoniq.no">post@phoniq.no</a>, eller gå til selskapet du teller for. Du kan når som helst slå av posisjon for appen i telefonens innstillinger. Da velger du lokaliteten selv. Du kan klage til <a href="https://www.datatilsynet.no">Datatilsynet</a>.</p>
+
+<h2>Demo</h2>
+<p>Med demo-koden kjører appen bare på telefonen, mot eksempeldata. Ingenting sendes til Phoniq.</p>
+
+<footer>Phoniq AS · org.nr. 937 389 086 · Bergen</footer>
+</main>
+</body>
+</html>
